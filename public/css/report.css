@@ -1,0 +1,102 @@
+.report-form{
+    display: none;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.report-form-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #e6e8ff;
+    width: 35vw;
+    height: auto;
+    border-radius: 30px;
+    padding: 1rem 2rem;
+    max-width: 550px;
+    max-height: 80vh;
+}
+
+.report-form h3{
+  font-size: 26px !important;
+  color: #7874f2;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.report-form label {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.report-form input, .report-form textarea{
+    font-size: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 7px;
+    border: 1.5px solid #7874f286;
+    outline: none;
+}
+
+.report-form textarea{
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 12rem;
+}
+.report-form .button{
+    display: flex;
+    justify-content: space-around;
+}
+.report-form #report, .report-form #close{
+    padding: 0.7rem;
+    font-size: 16px;
+    width: 110px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: #7874f2;
+    transition: all 0.5s ease;
+} 
+
+.report-form #report:hover, .report-form #close:hover{
+  background-color: #5c57f1f3;
+}
+
+/* MEDIA */
+
+/* Tablet Screen */
+@media (max-width: 1100px) {
+    .report-form-content{
+        width: 60vw;
+    }
+}
+/* Small Screens Media*/
+@media (max-width: 767px) {
+    .report-form-content{
+        width: 90vw;
+    }
+    .report-form h3{
+        font-size: 22px !important;
+      }
+    .report-form label{
+        font-size: 16px;
+    }
+    .report-form input, .report-form textarea{
+        font-size: 14px;
+    }
+    .report-form #report, .report-form #close{
+        font-size: 14px;
+        width: 95px;
+        padding: 0.5rem;
+    }
+}
+  

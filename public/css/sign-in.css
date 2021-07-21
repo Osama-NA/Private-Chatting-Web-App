@@ -1,0 +1,330 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+  outline: none;
+}
+body {
+  background-color: #dfe2fe65;
+  min-width: 300px;
+  letter-spacing: 0.7px;
+}
+.container {
+  position: relative;
+  width: 65%;
+  background-color: rgba(255, 255, 255, 0.952);
+  margin: 0 auto;
+  padding-top: 12rem;
+}
+
+/* HEADER */
+
+.header {
+  z-index: 2;
+  display: flex;
+  width: 65%;
+  height: 80px;
+  background-color: rgba(27, 27, 27, 0.938);
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+}
+
+.header .logo img {
+  margin-left: 2rem;
+  margin-top: -0.7rem;
+  width: 100px;
+  height: 100px;
+}
+
+.header .nav {
+  display: block;
+  margin-top: 1.8rem;
+  margin-right: 5rem;
+  animation-name: nav-animation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+}
+
+.header .nav a {
+  font-size: 18px;
+  padding-left: 1rem;
+  text-decoration: none;
+  color: white;
+  transition: all 0.5s ease;
+}
+
+.header .nav a:hover {
+  color: #8e98f5;
+}
+
+.burger {
+  position: absolute;
+  top: 1.8rem;
+  right: 1.8rem;
+  cursor: pointer;
+  color: transparent;
+}
+
+.burger .slice {
+  margin-bottom: 5px;
+  height: 4px;
+  width: 25px;
+  border-radius: 50px;
+  background-color: #7874f2;
+  transition: all 0.5s ease;
+}
+
+.burger:hover > .slice {
+  background-color: #9996f0;
+}
+
+/* SIGN IN */
+
+section #sign-in-form {
+  width: 100%;
+  margin-bottom: 13rem;
+  display: flex;
+  justify-content: center;
+}
+
+section #sign-in-form form {
+  width: 420px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2.5rem;
+  border-radius: 30px;
+  box-shadow: 0px 2px 4px 0.5px rgba(0, 0, 0, 0.204);
+  background-color: #dfe2fe54;
+}
+
+section #sign-in-form form h3 {
+  padding-bottom: 0.3rem;
+  font-size: 26px !important;
+  color: #7874f2;
+  text-align: center;
+}
+
+section #sign-in-form form label {
+  color: rgba(0, 0, 0, 0.70);
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 0.7rem;
+}
+
+section #sign-in-form form input {
+  width: 100%;
+  font-size: 16px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  outline: none;
+  border-radius: 7px;
+  border: 1.5px solid #7874f286;
+}
+
+section #sign-in-form form #sign-in {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  letter-spacing: 1px;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+  background-color: #7874f2;
+  transition: all 0.5s ease;
+}
+
+section #sign-in-form form #sign-in:hover {
+  background-color: #5c57f1f3;
+}
+
+#minion{
+  opacity: 0.9;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: 200px;
+  right: 70px;
+  animation-name: minion;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+#minions{
+  opacity: 0.9;
+  position: absolute;
+  width: 100px;
+  height: 150px;
+  bottom: 230px;
+  left: 70px;
+  animation-name: minions;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+/* FOOTER */
+
+footer {
+  position: relative;
+}
+footer section {
+  background-color: rgba(27, 27, 27, 0.938);
+  height: 150px;
+}
+footer section #footer-text {
+  font-size: 12px;
+  width: 50%;
+  padding: 2rem;
+  margin: 0 auto;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+footer section #report-bug {
+  padding-top: 2.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bolder;
+}
+footer a {
+  cursor: pointer;
+  padding: 1rem;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+footer i {
+  color: #7874f2;
+  font-size: 14px;
+}
+#footer-img {
+  position: absolute;
+  width: 90px;
+  height: 230px;
+  bottom: 150px;
+  right: 70px;
+}
+
+/* Animations */
+
+@keyframes nav-animation {
+  0% {
+    transform: translate(-200px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
+@keyframes minion{
+  0%{
+    bottom: 200px;
+  }
+  50%{
+    bottom: 230px;
+  }
+  100%{
+    bottom: 200px;
+  }
+}
+@keyframes minions{
+  0%{
+    bottom: 230px;
+  }
+  50%{
+    bottom: 200px;
+  }
+  100%{
+    bottom: 230px;
+  }
+}
+/* MEDIA */
+
+@media (min-width: 1600px){
+  .container {
+    width: 1100px;
+  }
+  .header {
+    width: 1100px;
+  }
+}
+
+/* Tablet Screen */
+@media (max-width: 1100px) {
+  .container {
+    width: 100%;
+  }
+  .header {
+    width: 100%;
+  }
+}
+
+/* Small Screens Media*/
+@media (max-width: 767px) {
+  #minion, #minions {
+    display: none;
+  }
+  .header {
+    width: 100%;
+  }
+  header nav {
+    width: 100%;
+  }
+  .header .nav {
+    margin: 0;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .header .nav a {
+    border-top: solid 3px rgba(255, 255, 255, 0.938);
+    padding: 0.5rem;
+    display: block;
+    font-size: 17px;
+    background-color: #8e98f5;
+  }
+  .header .nav a:hover {
+    color: rgba(27, 27, 27, 0.938);
+  }
+
+  section #sign-in-form form {
+    width: 90%;
+    height: auto;
+    padding: 0.5rem 1.5rem;
+  }
+  section #sign-in-form form h3{
+    font-size: 22px !important;
+  }
+  section #sign-in-form form label,section #sign-in-form form input{
+    font-size: 14px !important;
+  }
+  section #sign-in-form form #sign-in {
+    font-size: 14px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  footer section {
+    height: 100px;
+  }
+  footer section #footer-text {
+    width: 75%;
+    font-size: 7px;
+  }
+  footer section #report-bug {
+    padding-top: 1.5rem;
+    font-size: 8px;
+  }
+  footer section #footer-text {
+    padding: 1.5rem;
+  }
+  footer i {
+    font-size: 10px;
+  }
+}

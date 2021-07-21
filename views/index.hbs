@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/report.css" />
+  <link rel="stylesheet" href="/css/normalize.css" />
+  <title>Seguro - Secure Chatting</title>
+</head>
+
+<body>
+  <div class="container">
+    <img src="/images/background.png" alt="Background Image" id="background-img" />
+    <header>
+      <div class="header">
+        <div class="logo">
+          <img src="/images/logo.png" alt="logo" />
+        </div>
+        <nav>
+          <div class="nav">
+            <a href="#go-about">About</a>
+            <a href="#go-contact">Contact us</a>
+            <a href="/sign-in">Sign in</a>
+            <a href="/sign-up">Sign up</a>
+          </div>
+          <div class="burger">
+            <div class="slice"></div>
+            <div class="slice"></div>
+            <div class="slice"></div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="create-room">
+        <a href="/create-room" class="create-room-btn">Create Chatting Room</a>
+        <a href="/sign-in" class="sign-in">sign in to save your chat</a>
+      </section>
+
+      <div id="go-about"></div>
+      <section id="about">
+        <img src="/images/texting.png" alt="texting" id="texting-img" />
+        <div class="about-text">
+          <h2>About</h2>
+
+          <p>
+            Secure Chatting is a application where you can communicate with
+            anyone securely.
+
+            <br /><br /><a href="">Create</a> a chatting room and send your
+            friend the generated URL.
+
+            <br /><br />Chatting rooms can be accessed only once, to keep your
+            chat logs protected. To save your chat logs
+            <a href="/sign-up"> sign up</a> and start chatting.
+          </p>
+        </div>
+      </section>
+
+      <div id="go-contact"></div>
+      <section>
+        <div id="contact">
+          <form action="/db/guest-contact-us" method="post">
+            <h2>Contact Us</h2>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jonathan@gmail.com" required />
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" maxlength="50" placeholder="Enter your subject" required />
+            <label for="description">Description</label>
+            <textarea id="description" name="description" cols="20" rows="3" maxlength="500"
+              placeholder="Enter your description" required></textarea>
+            <input type="submit" id="submit" value="Submit" name="submit" />
+          </form>
+
+          <p id="guest-contact-us-message" style="display:none">{{guestContactUsMessage}}</p>
+          <script>
+            let guestContactUsMessage = document.getElementById("guest-contact-us-message").innerHTML;
+            if (guestContactUsMessage !== "") {
+              window.alert(guestContactUsMessage);
+            }
+          </script>
+          
+        </div>
+      </section>
+    </main>
+
+    <img src="/images/lock-icon.png" alt="lock" id="lock1" />
+    <img src="/images/lock-icon.png" alt="lock" id="lock2" />
+    <img src="/images/chat-bubble.png" alt="chat bubble" id="bubble1" />
+    <img src="/images/chat-bubble.png" alt="chat bubble" id="bubble2" />
+    <img src="/images/chat-bubble.png" alt="chat bubble" id="bubble3" />
+    <img src="/images/footer-img.png" alt="footer image" id="footer-img" />
+
+
+
+    <footer>
+      <section>
+        <div id="report-bug">
+          <a>
+            Report a bug
+            <i class="fas fa-bug"></i>
+          </a>
+        </div>
+        <p id="footer-text">
+          &copy; 2021, All Rights Reserved <br />
+          Developed by
+          <span style="color: #7874f2; font-weight: bolder">
+            Osama AL Hajj Ali
+          </span>
+        </p>
+      </section>
+
+    </footer>
+  </div>
+
+  <section class="report-form">
+    <form action="/db/bug-report" method="post" class="report-form-content">
+      <h3>Report A Bug</h3>
+      <label for="bug-name">Bug</label>
+      <input type="text" name="bug-name" id="bug-name" placeholder="Bug  name" maxlength="50" required>
+      <label for="bug-description">Description</label>
+      <textarea name="bug-description" maxlength="250" placeholder="Describe the bug in details ..."
+        required></textarea>
+      <textarea name="from" style="display:none">index</textarea>
+      <div class="button">
+        <input type="button" value="Close" name="close" id="close">
+        <input type="submit" value="Report" name="report" id="report">
+      </div>
+    </form>
+  </section>
+
+  <p id="bug-report-message" style="display:none">{{bugReportMessage}}</p>
+  <script>
+    let bugReportMessage = document.getElementById("bug-report-message").innerHTML;
+    if (bugReportMessage !== "") {
+      window.alert(bugReportMessage);
+    }
+  </script>
+
+  <script src="/js/responsive-nav.js"></script>
+  <script src="/js/report.js"></script>
+</body>
+
+</html>
