@@ -40,8 +40,7 @@
 
       <section>
         <div id="sign-in-form">
-            
-          <form action="" method="post">
+          <form action="/db/sign-in" method="post">
             <h3>Sign In</h3>
             <label for="email">Email:</label>
             <input
@@ -57,7 +56,7 @@
               type="password"
               placeholder="********"
               id="password"
-              name="sign-in-password"
+              name="password"
               minlength="8"
               maxlength="25"
               required
@@ -68,11 +67,17 @@
               id="sign-in"
               value="Sign in"
             />
-            
           </form>
         </div>
       </section>
-      
+      <p id="sign-in-message" style="display:none">{{signInMessage}}</p>
+      <script>
+        let signInMessage = document.getElementById("sign-in-message").innerText;
+        if(signInMessage !== ""){
+          window.alert(signInMessage);
+        }
+      </script>
+
       <img src="/images/minion.png" alt="minion" id="minion" />
       <img src="/images/minions.png" alt="minions" id="minions" />
       

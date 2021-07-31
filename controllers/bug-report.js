@@ -1,4 +1,4 @@
-const db = require('../db-connection.js');
+const db = require('../utils/db-connection.js');
 
 exports.bugReport = (req,res) => {
     const bugName = req.body['bug-name'];
@@ -6,7 +6,7 @@ exports.bugReport = (req,res) => {
     const from = req.body['from'];
     const solved = 'No';
 
-    if(bugName !== "" && bugDescription !== ""){
+    if(bugName && bugDescription ){
         db.query("SELECT * FROM bug_reports WHERE bug_description = ?" , [bugDescription] , (err, results) => {
             if(err){
                 return res.render(from, {

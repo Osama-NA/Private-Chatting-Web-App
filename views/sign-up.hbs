@@ -40,8 +40,7 @@
 
       <section>
         <div id="sign-up-form">
-            
-          <form action="" method="post">
+          <form action="/db/sign-up" method="post">
             <h3>Sign Up</h3>
             <label for="email">Email:</label>
             <input
@@ -90,6 +89,15 @@
           </form>
         </div>
       </section>
+
+      <p id="sign-up-message" style="display:none">{{signUpMessage}}</p>
+      <script>
+        let signUpMessage = document.getElementById("sign-up-message").innerHTML;
+        if(signUpMessage !== ""){
+          window.alert(signUpMessage);
+        }
+      </script>
+    
       <img src="/images/minion.png" alt="minion" id="minion" />
       <img src="/images/minions.png" alt="minions" id="minions" />
       <footer>

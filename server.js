@@ -1,23 +1,30 @@
 const express = require('express');
-const app = express();
 const path = require('path');
-const PORT = process.env.PORT || 3000;
+const pagesRoutes = require('./routes/pages');
+const databaseRoutes = require('./routes/db');
 
+const app = express();
+const PORT = process.env.PORT || 3000;
 const publicDirectory = path.join(__dirname, './public');
+
 app.use(express.static(publicDirectory));
 
 //Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({extended: false}));
 
-//Parse JSON bodies (as sent by API clients)
+//To allow our application to Parse JSON
 app.use(express.json());
 
 //Setting view engine to hbs to handle hbs files
 app.set('view engine', 'hbs');
 
 //Setting routes
-app.use('/', require('./routes/pages'));
-app.use('/db', require('./routes/db'));
+app.use('/', pagesRoutes);
+app.use('/db', databaseRoutes);
+app.get('/sign-out', (req,res) => {
+    req.logOut();
+    res.redirect('/sign-in');
+})
 
 //Setting server to listen on port 'PORT'
 app.listen(PORT, (error) => {

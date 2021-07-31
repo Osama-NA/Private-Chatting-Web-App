@@ -1,9 +1,9 @@
-const db = require('../db-connection.js');
+const db = require('../utils/db-connection.js');
 
 exports.guestContactUs = (req, res) => {
     const {email, subject, description} = req.body;
 
-    if(email !== "" && subject !== "" && description !== ""){
+    if(email && subject && description ){
         db.query("SELECT * FROM contact_forms WHERE subject = '"+subject+"' AND description = '" + description +"'", (err, results) => {
             if(err){
                 return res.render('index', {
