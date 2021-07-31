@@ -1,128 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/css/sign-in.css" />
-    <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="stylesheet" href="/css/report.css" />
-    <title>Seguro - Sign In</title>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="header">
-          <div class="logo">
-            <img src="/images/logo.png" alt="logo" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/sign-in.css" />
+  <link rel="stylesheet" href="/css/normalize.css" />
+  <link rel="stylesheet" href="/css/report.css" />
+  <title>Seguro - Sign In</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="header">
+        <div class="logo">
+          <img src="/images/logo.png" alt="logo" />
+        </div>
+        <nav>
+          <div class="nav">
+            <a href="/">Home</a>
+            <a href="/sign-up">Sign up</a>
           </div>
-          <nav>
-            <div class="nav">
-              <a href="/">Home</a>
-              <a href="/sign-up">Sign up</a>
-            </div>
-            <div class="burger">
-              <div class="slice"></div>
-              <div class="slice"></div>
-              <div class="slice"></div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <section>
-        <div id="sign-in-form">
-          <form action="/db/sign-in" method="post">
-            <h3>Sign In</h3>
-            <label for="email">Email:</label>
-            <input
-              type="email"
-              placeholder="johnsmith@gmail.com"
-              name="email"
-              id="email"
-              maxlength="100"
-              required
-            />
-            <label for="sign-in-password">Password:</label>
-            <input
-              type="password"
-              placeholder="********"
-              id="password"
-              name="password"
-              minlength="8"
-              maxlength="25"
-              required
-            />
-            <input
-              type="submit"
-              name="sign-in-submit"
-              id="sign-in"
-              value="Sign in"
-            />
-          </form>
-        </div>
-      </section>
-      <p id="sign-in-message" style="display:none">{{signInMessage}}</p>
-      <script>
-        let signInMessage = document.getElementById("sign-in-message").innerText;
-        if(signInMessage !== ""){
-          window.alert(signInMessage);
-        }
-      </script>
-
-      <img src="/images/minion.png" alt="minion" id="minion" />
-      <img src="/images/minions.png" alt="minions" id="minions" />
-      
-      <footer>
-        <section>
-          <div id="report-bug">
-            <a>
-              Report a bug
-              <i class="fas fa-bug"></i>
-            </a>
+          <div class="burger">
+            <div class="slice"></div>
+            <div class="slice"></div>
+            <div class="slice"></div>
           </div>
-          <p id="footer-text">
-            &copy; 2021, All Rights Reserved <br />
-            Developed by
-            <span style="color: #7874f2; font-weight: bolder">
-              Osama AL Hajj Ali
-            </span>
-          </p>
-        </section>
-      </footer>
-    </div>
+        </nav>
+      </div>
+    </header>
 
-    <section class="report-form">
-      <form action="/db/bug-report" method="post" class="report-form-content">
-        <h3>Report A Bug</h3>
-        <label for="bug-name">Bug</label>
-        <input type="text" maxlength="50"  name="bug-name" placeholder="Bug  name" required>
-        <label for="bug-description">Description</label>
-        <textarea name="bug-description" maxlength="500" placeholder="Describe the bug in details ..." required></textarea>
-        <textarea name="from" style="display:none">sign-in</textarea>
-        <div class="button">
-          <input type="button" value="Close" name="close" id="close">
-          <input type="submit" value="Report" name="report" id="report">
-        </div>
-      </form>
+    <section>
+      <div id="sign-in-form">
+        <form action="/db/sign-in" method="post">
+          <h3>Sign In</h3>
+          <label for="email">Email:</label>
+          <input type="email" placeholder="johnsmith@gmail.com" name="email" id="email" maxlength="100" required />
+          <label for="sign-in-password">Password:</label>
+          <input type="password" placeholder="********" id="password" name="password" minlength="8" maxlength="25"
+            required />
+          <input type="submit" name="sign-in-submit" id="sign-in" value="Sign in" />
+        </form>
+      </div>
     </section>
-    <p id="bug-report-message" style="display:none">{{bugReportMessage}}</p>
+    <p id="sign-in-message" style="display:none">{{signInMessage}}</p>
     <script>
-      let bugReportMessage = document.getElementById("bug-report-message").innerHTML;
-      if(bugReportMessage !== ""){
-        window.alert(bugReportMessage);
+      let signInMessage = document.getElementById("sign-in-message").innerText;
+      if (signInMessage !== "") {
+        window.alert(signInMessage);
       }
     </script>
-    
-    <script src="/js/responsive-nav.js"></script>
-    <script src="/js/report.js"></script>
-  </body>
+
+    <img src="/images/minion.png" alt="minion" id="minion" />
+    <img src="/images/minions.png" alt="minions" id="minions" />
+
+    <footer>
+      <section>
+        <div id="report-bug">
+          <a>
+            Report a bug
+            <i class="fas fa-bug"></i>
+          </a>
+        </div>
+        <p id="footer-text">
+          &copy; 2021, All Rights Reserved <br />
+          Developed by
+          <span style="color: #7874f2; font-weight: bolder">
+            Osama AL Hajj Ali
+          </span>
+        </p>
+      </section>
+    </footer>
+  </div>
+
+  <section class="report-form">
+    <form action="/db/bug-report" method="post" class="report-form-content">
+      <h3>Report A Bug</h3>
+      <label for="bug-name">Bug</label>
+      <input type="text" maxlength="50" name="bug-name" placeholder="Bug  name" required>
+      <label for="bug-description">Description</label>
+      <textarea name="bug-description" maxlength="500" placeholder="Describe the bug in details ..."
+        required></textarea>
+      <textarea name="from" style="display:none">sign-in</textarea>
+      <div class="button">
+        <input type="button" value="Close" name="close" id="close">
+        <input type="submit" value="Report" name="report" id="report">
+      </div>
+    </form>
+  </section>
+  <p id="bug-report-message" style="display:none">{{bugReportMessage}}</p>
+  <script>
+    let bugReportMessage = document.getElementById("bug-report-message").innerHTML;
+    if (bugReportMessage !== "") {
+      window.alert(bugReportMessage);
+    }
+  </script>
+
+  <script src="/js/responsive-nav.js"></script>
+  <script src="/js/report.js"></script>
+</body>
+
 </html>

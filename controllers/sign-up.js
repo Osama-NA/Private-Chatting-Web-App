@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt"); //Library to hash password
 const db = require("../utils/db-connection.js");
-const {storeUsers, users} = require("../utils/users");
+const { storeUsers, users } = require("../utils/users");
 
 exports.signUp = async (req, res) => {
   const email = req.body.email;
@@ -68,7 +68,6 @@ exports.signUp = async (req, res) => {
     });
   }
 };
-
 
 //Function which check if a given email is in a valid format
 function validEmail(email) {
