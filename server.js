@@ -21,10 +21,6 @@ app.set('view engine', 'hbs');
 //Setting routes
 app.use('/', pagesRoutes);
 app.use('/db', databaseRoutes);
-app.get('/sign-out', (req,res) => {
-    req.logOut();
-    res.redirect('/sign-in');
-})
 
 //Setting server to listen on port 'PORT'
 app.listen(PORT, (error) => {

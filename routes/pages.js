@@ -33,6 +33,11 @@ router.get('/signed-index', checkAuthenticated, (req, res) => {
     res.render('signed-index');
 });
 
+router.get('/sign-out', (req, res) => {
+    req.logOut();
+    res.redirect('/sign-in');
+});
+
 function checkAuthenticated(req, res, next) {
     if(req.isAuthenticated()){
         return next();
