@@ -9,7 +9,7 @@ exports.guestContactUs = (req, res) => {
         subject +
         "' AND description = '" +
         description +
-        "'",
+        "' AND submitted_by = '" + email +"'",
       (err, results) => {
         if (err) {
           return res.render("index", {

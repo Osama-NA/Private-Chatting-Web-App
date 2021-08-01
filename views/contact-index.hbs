@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/report.css" />
+    <link rel="stylesheet" href="/css/contact-index.css" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <title>Secure Chatting - Contact Us</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <img src="/images/logo.png" alt="logo" />
+          <div class="burger">
+            <div class="slice"></div>
+            <div class="slice"></div>
+            <div class="slice"></div>
+          </div>
+        </div>
+        
+
+        <div class="menu">
+          <a href="/signed-index">
+            <p class="menu-text">Home</p>
+            <i class="fas fa-home"></i>
+          </a>
+          <a href="/chat-logs">
+            <p class="menu-text">Chat logs</p>
+            <i class="fas fa-comments"></i>
+          </a>
+          <a href="/edit-index">
+            <p class="menu-text">Edit account</p>
+            <i class="fas fa-user-edit"></i>
+          </a>
+          <a href="/contact-index">
+            <p class="menu-text">Contact us</p>
+            <i class="fas fa-inbox"></i>
+          </a>
+          <a href="/sign-out">
+            <p class="menu-text">Sign out</p>
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </div>
+
+        <footer class="footer">
+          <div id="report-bug">
+            <a>
+              Report a bug
+              <i class="fas fa-bug"></i>
+            </a>
+          </div>
+          <p id="footer-text">
+            &copy; 2021, All Rights Reserved <br />
+            Developed by
+            <span style="color: #7874f2"> Osama AL Hajj Ali </span>
+          </p>
+        </footer>
+      </nav>
+
+      <main class="content">
+        <img src="/images/waves.png" alt="waves" id="waves" />
+        <form action="/db/contact-us" method="post" class="form">
+          <h2>Contact Us</h2>
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" 
+          maxlength="50" placeholder= "Enter your subject" required/>
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            name= "description"
+            cols="20"
+            rows="3"
+            placeholder= "Enter your description"
+            maxlength="500"
+            required
+            
+          ></textarea>
+          <div class="buttons">
+            <input
+              type="reset"
+              id="reset"
+              value="Reset"
+              name= "reset"
+            />
+            <input
+              type="submit"
+              id="submit"
+              value="Submit"
+              name= "submit"
+            />
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <p id="contact-us-message" style="display:none">{{contactUsMessage}}</p>
+    <script>
+      let contactUsMessage = document.getElementById("contact-us-message").innerHTML;
+      if(contactUsMessage !== ""){
+        window.alert(contactUsMessage);
+      }
+    </script>
+
+    <section class="report-form">
+      <form action="/db/bug-report" method="post" class="report-form-content">
+        <h3>Report A Bug</h3>
+        <label for="bug-name">Bug</label>
+        <input type="text" name="bug-name" maxlength="50" placeholder="Bug  name" required />
+        <label for="bug-description">Description</label>
+        <textarea
+          name="bug-description"
+          maxlength="250"
+          placeholder="Describe the bug in details ..."
+          required
+        ></textarea>
+        <textarea name="from" style="display:none">contact-index</textarea>
+        <div class="button">
+          <input type="button" value="Close" name="close" id="close" />
+          <input type="submit" value="Report" name="report" id="report" />
+        </div>
+      </form>
+    </section>
+    <p id="bug-report-message" style="display:none">{{bugReportMessage}}</p>
+    <script>
+      let bugReportMessage = document.getElementById("bug-report-message").innerHTML;
+      if(bugReportMessage !== ""){
+        window.alert(bugReportMessage);
+      }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="/js/responsive-side-nav.js"></script>
+    <script src="/js/report.js"></script>
+  </body>
+</html>

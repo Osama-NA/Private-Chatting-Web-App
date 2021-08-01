@@ -4,6 +4,7 @@ const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const { checkAuthenticated, checkAuthenticatedAdmin, checkNotAuthenticated } = require('../utils/auth-checker');
 
 const router = express.Router();
 
@@ -19,9 +20,13 @@ router.use(passport.initialize());
 router.use(passport.session());
 router.use(methodOverride("_method"));
 
-//Contact form from guest user
+//Sign in
 const signInController = require("../controllers/sign-in");
 router.post("/sign-in", checkNotAuthenticated, signInController.signIn);
+
+//Contact form from guest user
+const contactUsController = require("../controllers/contact-us");
+router.post("/contact-us", contactUsController.contactUs);
 
 //Contact form from guest user
 const guestContactUsController = require("../controllers/guest-contact-us");
@@ -34,12 +39,5 @@ router.post("/bug-report", bugReportController.bugReport);
 //Sign up
 const signUpController = require("../controllers/sign-up");
 router.post("/sign-up", checkNotAuthenticated, signUpController.signUp);
-
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/signed-index");
-  }
-  next();
-}
 
 module.exports = router;
