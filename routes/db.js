@@ -20,14 +20,6 @@ router.use(passport.initialize());
 router.use(passport.session());
 router.use(methodOverride("_method"));
 
-//Sign in
-const signInController = require("../controllers/sign-in");
-router.post("/sign-in", checkNotAuthenticated, signInController.signIn);
-
-//Contact form from guest user
-const contactUsController = require("../controllers/contact-us");
-router.post("/contact-us", contactUsController.contactUs);
-
 //Contact form from guest user
 const guestContactUsController = require("../controllers/guest-contact-us");
 router.post("/guest-contact-us", guestContactUsController.guestContactUs);
@@ -39,5 +31,25 @@ router.post("/bug-report", bugReportController.bugReport);
 //Sign up
 const signUpController = require("../controllers/sign-up");
 router.post("/sign-up", checkNotAuthenticated, signUpController.signUp);
+
+//Sign in
+const signInController = require("../controllers/sign-in");
+router.post("/sign-in", checkNotAuthenticated, signInController.signIn);
+
+//Contact form from guest user
+const contactUsController = require("../controllers/contact-us");
+router.post("/contact-us", checkAuthenticated, contactUsController.contactUs);
+
+//Update Email
+const updateEmailController = require("../controllers/update-email");
+router.post("/update-email", checkAuthenticated, updateEmailController.updateEmail);
+
+//Update Username
+const updateUsernameController = require("../controllers/update-username");
+router.post("/update-username", checkAuthenticated, updateUsernameController.updateUsername);
+
+//Update Password
+const updatePasswordController = require("../controllers/update-password");
+router.post("/update-password", checkAuthenticated, updatePasswordController.updatePassword);
 
 module.exports = router;

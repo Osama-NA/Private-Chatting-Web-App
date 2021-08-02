@@ -36,6 +36,7 @@ exports.signIn = (req, res, next) => {
         userInfo.setItem("id", user.id);
         userInfo.setItem("email", user.email);
         userInfo.setItem("username", user.username);
+        userInfo.setItem("password", user.password);
         userInfo.setItem("role", user.role);
         
         if (user.role === "basic") {

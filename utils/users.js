@@ -2,7 +2,7 @@ const db = require("./db-connection");
 
 const users = [];
 
-//Calling getUsers() and getAdmins() to add a role to each user then store them in users array as objects
+//Calling getUsers() and getAdmins() separately to set a role for each user then store them in users array as user objects
 function storeUsers(){
     getUsers();
     getAdmins();
@@ -13,7 +13,7 @@ const getUsers =()=> {
         if(error){
             console.log("Failed to select users: "+ error);
         }
-        Object.keys(results).forEach(function(key) {
+        Object.keys(results).forEach((key) => {
             let {id, email, username, password} = results[key];
             let user = {
                 id: id,
@@ -32,7 +32,7 @@ const getAdmins =()=> {
         if(error){
             console.log("Failed to select admins: "+ error);
         }
-        Object.keys(results).forEach(function(key) {
+        Object.keys(results).forEach((key) => {
             let {id, email, username, password} = results[key];
             let admin = {
                 id: id,

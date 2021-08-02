@@ -39,6 +39,10 @@ router.get("/admin-index", checkAuthenticatedAdmin, (req, res) => {
   res.render("admin-index");
 });
 
+router.get("/edit-index", checkAuthenticated, (req, res) => {
+  res.render("edit-index");
+});
+
 router.get("/contact-index", checkAuthenticated, (req, res) => {
   res.render("contact-index");
 });

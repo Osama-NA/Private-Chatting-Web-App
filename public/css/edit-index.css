@@ -1,0 +1,312 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #dfe2fe65;
+  min-width: 300px;
+  letter-spacing: 0.7px;
+}
+
+.container {
+  position: relative;
+  width: 65%;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+/* SIDE BAR NAVIGATION */
+
+.nav {
+  position: relative;
+  max-width: 270px;
+  min-width: 270px;
+  background-color: #2e2e30;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.logo {
+  width: 100%;
+  padding-left: 1.7rem;
+}
+
+.logo img {
+  width: 150px;
+  height: 160px;
+  padding-right: 0.5rem;
+}
+
+.burger {
+  position: absolute;
+  top: 4.3rem;
+  right: 2rem;
+  cursor: pointer;
+  color: transparent;
+}
+
+.burger .slice {
+  height: 4px;
+  width: 23px;
+  margin-bottom: 5px;
+  border-radius: 50px;
+  background-color: #ffffffe8;
+  transition: all 0.5s ease;
+}
+
+.burger:hover > .slice {
+  background-color: #7874f2;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 1.9rem;
+  width: 100%;
+}
+
+.menu a {
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+.menu p {
+  display: inline;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.911);
+}
+
+.menu i {
+  float: right;
+  position: relative;
+  top: 3px;
+  font-size: 17px;
+  padding-bottom: 1rem;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover i {
+  color: #7874f2;
+}
+
+.nav .footer {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer #report-bug a {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.911);
+}
+
+.footer #report-bug a i {
+  padding-left: 5px;
+  color: #7874f2;
+  font-size: 16px;
+}
+
+.footer #footer-text {
+  text-align: center;
+  padding-top: 1.5rem;
+  color: rgb(255, 255, 255);
+  font-size: 11px;
+}
+
+/* CONTENT */
+
+.content {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content::before{
+  content: "";
+  background-image: url(../images/waves.png);
+  background-position: 0px -50px;
+  background-repeat: no-repeat;
+  background-size: 200% 120%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: -300px;
+  left: 0px;
+  width: inherit;
+  height: inherit;
+  opacity: 0.75;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  z-index: 1;
+  width: 75%;
+  height: auto;
+  max-height: 90vh;
+}
+.form h2 {
+  z-index: 1;
+  text-align: center;
+  font-size: 32px;
+  color: #7874f2;
+  margin-bottom: 2rem;
+}
+.form .update {
+  display: flex;
+  flex-direction: column;
+}
+.form label {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.form input {
+  margin-bottom: 1rem;
+  font-size: 16px;
+  width: 100%;
+  padding: 1rem;
+  border: 1.5px solid #7874f286;
+  outline: none;
+  border-radius: 7px;
+}
+
+.form .submit{
+  font-weight: bold;
+  font-size: 16px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  color: rgb(255, 255, 255);
+  background-color: #7874f2;
+  width: 120px;
+  letter-spacing: 1px;
+  transition: all 0.4s ease;
+}
+
+.form .submit:hover, .form #submit-password:hover {
+  background-color: #5c57f1f3;
+}
+
+/* MEDIA */
+
+@media (min-width: 1600px){
+  .container {
+    width: 1100px;
+  }
+  .header {
+    width: 1100px;
+  }
+}
+
+
+/* Tablet Screen */
+@media (max-width: 1100px) {
+  .container {
+    width: 100%;
+  }
+}
+
+/* Small Screens Media*/
+@media (max-width: 767px) {
+  .nav {
+    min-width: 55px;
+    max-width: 55px;
+  }
+  .menu p,
+  .nav .footer,
+  .logo img {
+    display: none;
+  }
+  .logo {
+    padding-left: 1rem;
+  }
+  .logo img {
+    width: 120px;
+    height: 130px;
+  }
+  .burger {
+    top: 3.3rem;
+    right: 1rem ;
+  }
+  .burger .slice {
+    height: 4px;
+    width: 21px;
+  }
+  .menu {
+    padding: 8.3rem 1.1rem;
+  }
+  .menu p {
+    font-size: 16px;
+  }
+  .menu i {
+    float: right;
+    font-size: 15px;
+    padding-bottom: 0.5rem;
+  }
+  .footer #report-bug a {
+    font-size: 12px;
+  }
+  .footer #report-bug a i {
+    font-size: 13px;
+  }
+  .footer #footer-text {
+    font-size: 10px;
+  }
+  .content{
+      overflow: scroll;
+  }
+  .form {
+    width: 85%;
+  }
+  .form h2 {
+    font-size: 26px !important;
+  }
+  .form input {
+    font-size: 14px;
+    padding: 0.8rem;
+    width: 100%;
+  }
+  .form label {
+    font-size: 16px;
+  }
+  .form #submit, .form #submit-password {
+    font-size: 14px;
+    width: 100px;
+    margin-left: 0;
+    padding: 0.6rem ;
+  }
+  .form .update{
+      flex-direction: column;
+  }
+}
