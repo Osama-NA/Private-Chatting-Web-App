@@ -3,7 +3,11 @@ const session = require("express-session");
 const flash = require("express-flash");
 const passport = require("passport");
 const userInfo = require("../utils/user-info");
-const { checkAuthenticated, checkAuthenticatedAdmin, checkNotAuthenticated } = require('../utils/auth-checker');
+const {
+  checkAuthenticated,
+  checkAuthenticatedAdmin,
+  checkNotAuthenticated,
+} = require("../utils/auth-checker");
 require("dotenv").config();
 
 const router = express.Router();
@@ -39,6 +43,10 @@ router.get("/admin-index", checkAuthenticatedAdmin, (req, res) => {
   res.render("admin-index");
 });
 
+router.get("/add-admin", checkAuthenticatedAdmin, (req, res) => {
+  res.render("add-admin");
+});
+
 router.get("/edit-index", checkAuthenticated, (req, res) => {
   res.render("edit-index");
 });
@@ -52,7 +60,5 @@ router.get("/sign-out", (req, res) => {
   req.logOut();
   res.redirect("/sign-in");
 });
-
-
 
 module.exports = router;

@@ -4,7 +4,11 @@ const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
-const { checkAuthenticated, checkAuthenticatedAdmin, checkNotAuthenticated } = require('../utils/auth-checker');
+const {
+  checkAuthenticated,
+  checkAuthenticatedAdmin,
+  checkNotAuthenticated,
+} = require("../utils/auth-checker");
 
 const router = express.Router();
 
@@ -42,14 +46,30 @@ router.post("/contact-us", checkAuthenticated, contactUsController.contactUs);
 
 //Update Email
 const updateEmailController = require("../controllers/update-email");
-router.post("/update-email", checkAuthenticated, updateEmailController.updateEmail);
+router.post(
+  "/update-email",
+  checkAuthenticated,
+  updateEmailController.updateEmail
+);
 
 //Update Username
 const updateUsernameController = require("../controllers/update-username");
-router.post("/update-username", checkAuthenticated, updateUsernameController.updateUsername);
+router.post(
+  "/update-username",
+  checkAuthenticated,
+  updateUsernameController.updateUsername
+);
 
 //Update Password
 const updatePasswordController = require("../controllers/update-password");
-router.post("/update-password", checkAuthenticated, updatePasswordController.updatePassword);
+router.post(
+  "/update-password",
+  checkAuthenticated,
+  updatePasswordController.updatePassword
+);
+
+//Add Admin
+const addAdminController = require("../controllers/add-admin");
+router.post("/add-admin", checkAuthenticatedAdmin, addAdminController.addAdmin);
 
 module.exports = router;
