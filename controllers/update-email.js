@@ -63,8 +63,8 @@ exports.updateEmail = (req, res) => {
       );
     }
   } else {
-    return res.render("sign-up", {
-      signUpMessage: "Please fill in a valid email",
+    return res.render(page, {
+      updateEmailMessage: "Please fill in a valid email",
     });
   }
 };

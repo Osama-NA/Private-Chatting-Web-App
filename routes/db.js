@@ -51,6 +51,11 @@ router.post(
   checkAuthenticated,
   updateEmailController.updateEmail
 );
+router.post(
+  "/update-email-admin",
+  checkAuthenticatedAdmin,
+  updateEmailController.updateEmail
+);
 
 //Update Username
 const updateUsernameController = require("../controllers/update-username");
@@ -59,12 +64,22 @@ router.post(
   checkAuthenticated,
   updateUsernameController.updateUsername
 );
+router.post(
+  "/update-username-admin",
+  checkAuthenticatedAdmin,
+  updateUsernameController.updateUsername
+);
 
 //Update Password
 const updatePasswordController = require("../controllers/update-password");
 router.post(
   "/update-password",
   checkAuthenticated,
+  updatePasswordController.updatePassword
+);
+router.post(
+  "/update-password-admin",
+  checkAuthenticatedAdmin,
   updatePasswordController.updatePassword
 );
 
