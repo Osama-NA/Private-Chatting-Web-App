@@ -69,4 +69,12 @@ router.get("/sign-out", (req, res) => {
 const viewUsersController = require("../controllers/view-users");
 router.get("/view-users", checkAuthenticatedAdmin, viewUsersController.viewUsers);
 
+//Contact Forms
+const contactFormsController = require("../controllers/contact-forms");
+router.get(
+  "/contact-forms",
+  checkAuthenticatedAdmin,
+  contactFormsController.contactForms
+);
+
 module.exports = router;

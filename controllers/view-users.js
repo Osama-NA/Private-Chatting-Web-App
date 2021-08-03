@@ -19,9 +19,7 @@ exports.viewUsers = (req, res) => {
             });
             res.render("view-users", {users: users});
         }else{
-            return res.render("view-users", {
-                users: ""
-            });
+            return res.render("view-users");
         }
     });
 }

@@ -91,4 +91,12 @@ router.post("/add-admin", checkAuthenticatedAdmin, addAdminController.addAdmin);
 const banUserController = require("../controllers/ban-user");
 router.post("/ban-user", checkAuthenticatedAdmin, banUserController.banUser);
 
+//Delete Contact Form
+const deleteContactFormController = require("../controllers/delete-contact-form");
+router.post(
+  "/delete-contact-form",
+  checkAuthenticatedAdmin,
+  deleteContactFormController.deleteContactForm
+);
+
 module.exports = router;
