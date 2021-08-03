@@ -99,4 +99,20 @@ router.post(
   deleteContactFormController.deleteContactForm
 );
 
+//Mark Bug Solved
+const markBugSolvedController = require("../controllers/bug-solved");
+router.post(
+  "/bug-solved",
+  checkAuthenticatedAdmin,
+  markBugSolvedController.bugSolved
+);
+
+//Mark Bug Not Solved
+const markBugNotSolvedController = require("../controllers/bug-not-solved");
+router.post(
+  "/bug-not-solved",
+  checkAuthenticatedAdmin,
+  markBugNotSolvedController.bugNotSolved
+);
+
 module.exports = router;

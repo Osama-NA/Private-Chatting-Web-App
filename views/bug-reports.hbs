@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/bug-reports.css" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <title>Secure Chatting - Bug Reports</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <img src="/images/logo.png" alt="logo" />
+          <div class="burger">
+            <div class="slice"></div>
+            <div class="slice"></div>
+            <div class="slice"></div>
+          </div>
+        </div>
+        
+
+        <div class="menu">
+          <a href="/admin-index">
+            <p class="menu-text">Home</p>
+            <i class="fas fa-home"></i>
+          </a>
+          <a href="/admin-chat-logs">
+            <p class="menu-text">Chat logs</p>
+            <i class="fas fa-comments"></i>
+          </a>
+          <a href="/admin-edit-index">
+            <p class="menu-text">Edit account</p>
+            <i class="fas fa-user-edit"></i>
+          </a>
+          <a href="/add-admin">
+            <p class="menu-text">Add admin</p>
+            <i class="fas fa-user-plus"></i>
+          </a>
+          <a href="/view-users">
+            <p class="menu-text">View users</p>
+            <i class="fas fa-users"></i>
+          </a>
+          <a href="/contact-forms">
+            <p class="menu-text">Contact forms</p>
+            <i class="fas fa-inbox"></i>
+          </a>
+          <a href="/bug-reports">
+            <p class="menu-text">Bug Reports</p>
+            <i class="fas fa-bug"></i>
+          </a>
+          <a href="/sign-out">
+            <p class="menu-text">Sign out</p>
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </div>
+
+        <footer class="footer">
+          <p id="footer-text">
+            &copy; 2021, All Rights Reserved <br />
+            Developed by
+            <span style="color: #7874f2"> Osama AL Hajj Ali </span>
+          </p>
+        </footer>
+      </nav>
+
+      <main class="content">
+        <h2>Bug Reports</h2>
+        <table border="1" id= "table">
+          <tr>
+            <th><div>Bug Name</div></th>
+            <th><div>Description</div></th>
+            <th><div>Solved</div></th>
+            <th><div>Mark Solved</div></th>
+          </tr>
+
+          <!-- /controllers/reported-bugs renders this page and sends reports as a message then reports string is formatted then printed-->
+          
+          <b id="bug-reports" style="display:none">{{#if reports}}
+            {{reports}}
+            {{/if}}</b>
+          <script>
+            let table = document.getElementById("table");
+
+            let reports = document.getElementById("bug-reports").innerHTML;
+            reports = reports.replaceAll("&lt;", "<").replaceAll("&gt;", ">");
+            let reportsArray = reports.substring(4, reports.length - 5).split("|");
+            let size = reportsArray.length;
+            for (let i = 0; i < size; i++) {
+              let tr = document.createElement('tr');
+              tr.innerHTML = reportsArray[i];
+              table.appendChild(tr);
+            }
+          </script>
+        </table>
+      </main>
+    </div>
+
+    <p id="bug-solved-message" style="display:none">{{#if bugSolvedMessage}}
+      {{bugSolvedMessage}}
+      {{/if}}</p>
+    <script>
+      let bugSolvedMessage = document.getElementById("bug-solved-message").innerHTML;
+      if (bugSolvedMessage !== "") {
+        window.alert(bugSolvedMessage);
+      }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="/js/responsive-side-nav.js"></script>
+  </body>
+</html>

@@ -110,6 +110,7 @@ body {
   flex-direction: column;
 }
 
+
 .footer #footer-text {
   text-align: center;
   padding-top: 1.5rem;
@@ -159,24 +160,28 @@ td{
   padding: 0.5rem;
   height: 50px;
 }
-#delete-col{
+.col1,.col2{
   position: relative;
   width: 150px;
 }
 
-#delete-col img {
+.col1 img, .col2 img {
   z-index: 0;
   width: 40px;
   height:  auto;
   position: absolute;
-  top: -6px;
-  left: 50px;
+  top: 5px;
+  left: 55px;
 }
-#delete{
+.col2 img {
+  top: -4px;
+  left: 55px;
+}
+.solve{
   cursor: pointer;
   position: absolute;
   top: 6px;
-  left: 53px;
+  left: 40px;
   padding: 0.5rem;
   opacity: 0;
 }
@@ -236,6 +241,12 @@ td{
     font-size: 15px;
     padding-bottom: 0.5rem;
   }
+  .footer #report-bug a {
+    font-size: 12px;
+  }
+  .footer #report-bug a i {
+    font-size: 13px;
+  }
   .footer #footer-text {
     font-size: 10px;
   }
@@ -260,20 +271,21 @@ td{
   table td {
     min-width: 75px;
   }
-  #delete-col{
-    position: relative;
+  .col1,.col2{
     width: 50px;
   }
   
-  #delete-col img {
+  .col1 img, .col2 img {
     width: 30px;
-    top: -3px;
+    top: 5px;
     left: 10px;
   }
-  #delete{
-    top: 3px;
+  .col2 img{
+    top: 0px;
+  }
+  .solve{
+    top: 6px;
     left: 6px;
     padding: 0.5rem 0px;
-    opacity: 0;
   }
 }

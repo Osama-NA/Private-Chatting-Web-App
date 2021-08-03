@@ -77,4 +77,12 @@ router.get(
   contactFormsController.contactForms
 );
 
+//Reported Bugs
+const reportedBugsController = require("../controllers/reported-bugs");
+router.get(
+  "/bug-reports",
+  checkAuthenticatedAdmin,
+  reportedBugsController.reportedBugs
+);
+
 module.exports = router;
