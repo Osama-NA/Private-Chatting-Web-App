@@ -50,7 +50,9 @@
         </form>
       </div>
     </section>
-    <p id="sign-in-message" style="display:none">{{signInMessage}}</p>
+    <p id="sign-in-message" style="display:none">{{#if signInMessage}}
+      {{signInMessage}}
+      {{/if}}</p>
     <script>
       let signInMessage = document.getElementById("sign-in-message").innerText;
       if (signInMessage !== "") {
@@ -95,7 +97,9 @@
       </div>
     </form>
   </section>
-  <p id="bug-report-message" style="display:none">{{bugReportMessage}}</p>
+  <p id="bug-report-message" style="display:none">{{#if bugReportMessage}}
+    {{bugReportMessage}}
+    {{/if}}</p>
   <script>
     let bugReportMessage = document.getElementById("bug-report-message").innerHTML;
     if (bugReportMessage !== "") {

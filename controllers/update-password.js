@@ -12,7 +12,7 @@ exports.updatePassword = async (req, res) => {
   const from = role === "basic" ? "users" : "admin";
   const page = role === "basic" ? "edit-index" : "admin-edit-index";
 
-  if (email && newPassword && password && confirmPassword && hashedPassword &&from && page) {
+  if (email && newPassword && password && confirmPassword && hashedPassword && from && page) {
     try {
         if (await bcrypt.compare(password, hashedPassword)) {
             if(newPassword === confirmPassword){

@@ -81,7 +81,9 @@
             <input type="submit" id="submit" value="Submit" name="submit" />
           </form>
 
-          <p id="guest-contact-us-message" style="display:none">{{guestContactUsMessage}}</p>
+          <p id="guest-contact-us-message" style="display:none">{{#if guestContactUsMessage}}
+            {{guestContactUsMessage}}
+            {{/if}}</p>
           <script>
             let guestContactUsMessage = document.getElementById("guest-contact-us-message").innerHTML;
             if (guestContactUsMessage !== "") {
@@ -136,7 +138,9 @@
     </form>
   </section>
 
-  <p id="bug-report-message" style="display:none">{{bugReportMessage}}</p>
+  <p id="bug-report-message" style="display:none">{{#if bugReportMessage}}
+    {{bugReportMessage}}
+    {{/if}}</p>
   <script>
     let bugReportMessage = document.getElementById("bug-report-message").innerHTML;
     if (bugReportMessage !== "") {

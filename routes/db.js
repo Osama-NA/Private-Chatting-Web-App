@@ -87,4 +87,8 @@ router.post(
 const addAdminController = require("../controllers/add-admin");
 router.post("/add-admin", checkAuthenticatedAdmin, addAdminController.addAdmin);
 
+//Ban User
+const banUserController = require("../controllers/ban-user");
+router.post("/ban-user", checkAuthenticatedAdmin, banUserController.banUser);
+
 module.exports = router;

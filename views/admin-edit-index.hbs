@@ -98,7 +98,9 @@
             />
             <input type="submit" class="submit" value="Update" name="submit-email" />
           </form>
-          <p id="update-email-message" style="display:none">{{updateEmailMessage}}</p>
+          <p id="update-email-message" style="display:none">{{#if updateEmailMessage}}
+            {{updateEmailMessage}}
+            {{/if}}</p>
           <script>
             let updateEmailMessage = document.getElementById("update-email-message").innerHTML;
             if(updateEmailMessage !== ""){
@@ -124,7 +126,9 @@
             />
             <input type="submit" class="submit" value="Update" name="submit-username" />
           </form>
-          <p id="update-username-message" style="display:none">{{updateUsernameMessage}}</p>
+          <p id="update-username-message" style="display:none">{{#if updateUsernameMessage}}
+            {{updateUsernameMessage}}
+            {{/if}}</p>
           <script>
             let updateUsernameMessage = document.getElementById("update-username-message").innerHTML;
             if(updateUsernameMessage !== ""){
@@ -162,7 +166,9 @@
               name="submit-password"
             />
           </form>
-          <p id="update-password-message" style="display:none">{{updatePasswordMessage}}</p>
+          <p id="update-password-message" style="display:none">{{#if updatePasswordMessage}}
+            {{updatePasswordMessage}}
+            {{/if}}</p>
           <script>
             let updatePasswordMessage = document.getElementById("update-password-message").innerHTML;
             if(updatePasswordMessage !== ""){

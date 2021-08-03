@@ -42,7 +42,7 @@ exports.addAdmin = async (req, res) => {
                   }
                 );
               } else {
-                return res.render("sign-up", {
+                return res.render("add-admin", {
                   signUpMessage: "This email is already registered",
                 });
               }

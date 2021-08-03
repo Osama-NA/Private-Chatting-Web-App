@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
-  <link rel="stylesheet" href="/css/add-admin.css" />
+  <link rel="stylesheet" href="/css/view-users.css" />
   <link rel="stylesheet" href="/css/normalize.css" />
-  <title>Secure Chatting - Add Admin</title>
+  <title>Secure Chatting - View Users</title>
 </head>
 
 <body>
@@ -26,6 +26,7 @@
           <div class="slice"></div>
         </div>
       </div>
+
 
       <div class="menu">
         <a href="/admin-index">
@@ -72,32 +73,55 @@
     </nav>
 
     <main class="content">
-      <img src="/images/waves.png" alt="waves" id="waves" />
-      <form action="/db/add-admin" method="post" class="add-admin-form">
-        <h2>Add Admin</h2>
-        <label for="email">Email:</label>
-        <input type="email" placeholder="johnsmith@gmail.com" name="email" required />
-        <label for="username">Username:</label>
-        <input type="text" placeholder="John Smith" name="username" maxlength="25" required />
-        <label for="password">Password:</label>
-        <input type="password" placeholder="At least 8 characters" name="password" minlength="8" maxlength="25"
-          required />
-        <label for="confirm-password">Confirm Password:</label>
-        <input type="password" placeholder="********" name="confirm-password" minlength="8" maxlength="25" required />
-        <input type="submit" name="submit" id="submit" value="Submit" />
-      </form>
-      <p id="add-admin-message" style="display:none">{{#if addAdminMessage}}
-        {{addAdminMessage}}
-        {{/if}}</p>
-      <script>
-        let addAdminMessage = document.getElementById("add-admin-message").innerHTML;
-        if (addAdminMessage !== "") {
-          window.alert(addAdminMessage);
-        }
-      </script>
+      <h2>Users</h2>
+      <table border="1" id= "table">
+        <tr>
+          <th>
+            <div>User ID</div>
+          </th>
+          <th>
+            <div>Username</div>
+          </th>
+          <th>
+            <div>Email</div>
+          </th>
+          <th>
+            <div>Ban User</div>
+          </th>
+        </tr>
+
+        <!--view-users renders this page and sends users as a message then users string is formatted then printed-->
+        
+        <b id="users" style="display:none">{{#if users}}
+          {{users}}
+        {{/if}}</b>
+        <script>
+          let table = document.getElementById("table");
+
+          let users = document.getElementById("users").innerHTML;
+          users = users.replaceAll("&lt;","<").replaceAll("&gt;",">");
+          let usersArray = users.substring(4,users.length - 5).split("|");
+          let size = usersArray.length;
+          for(let i = 0 ; i < size ; i++){
+            let tr= document.createElement('tr');
+            tr.innerHTML = usersArray[i];
+            table.appendChild(tr);
+          }
+        </script>
+
+      </table>
     </main>
   </div>
 
+  <p id="view-user-message" style="display:none">{{#if viewUsersMessage}}
+    {{viewUsersMessage}}
+    {{/if}}</p>
+    <script>
+      let viewUsersMessage= document.getElementById("view-user-message").innerHTML;
+      if(viewUsersMessage !== ""){
+        window.alert(viewUsersMessage);
+      }
+    </script>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="/js/responsive-side-nav.js"></script>

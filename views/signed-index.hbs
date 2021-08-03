@@ -99,7 +99,9 @@
       </div>
     </form>
   </section>
-  <p id="bug-report-message" style="display:none">{{bugReportMessage}}</p>
+  <p id="bug-report-message" style="display:none">{{#if bugReportMessage}}
+    {{bugReportMessage}}
+    {{/if}}</p>
   <script>
     let bugReportMessage = document.getElementById("bug-report-message").innerHTML;
     if (bugReportMessage !== "") {

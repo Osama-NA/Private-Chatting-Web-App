@@ -65,4 +65,8 @@ router.get("/sign-out", (req, res) => {
   res.redirect("/sign-in");
 });
 
+//View Users
+const viewUsersController = require("../controllers/view-users");
+router.get("/view-users", checkAuthenticatedAdmin, viewUsersController.viewUsers);
+
 module.exports = router;
