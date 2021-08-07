@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Refreshing Page Every 3 Seconds-->
+    <meta http-equiv="refresh" content="3">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/waiting-room.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguro - Waiting For A User To Join Room</title>
+</head>
+<body>
+    <div class="container">
+      <main>
+        <h1>Waiting for a user to join chat room . . .</h1>
+        <p>Send your friend the link bellow to join the chat room:</p>
+        <div id="copy-link">
+          <!--Room url is generated and passed from controllers/waiting-room.js -->
+          <input type="text" value={{url}} id="url" readonly/>
+          <button onclick="myFunction()">Copy link</button>
+        </div>
+        <a href="/">Go back to home page</a>
+      </main>
+    </div>
+
+    <script>
+      function myFunction() {
+        var copyText = document.getElementById("url");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+      }
+    </script>
+</body>
+</html>

@@ -9,7 +9,7 @@ exports.waitingRoom = (req, res) => {
     const url = `${req.protocol}://${req.get(
       "host"
     )}/get-name?id=${id}&second=true`;
-    return res.send(url);//"waiting-room", {url: url});
+    return res.render("waiting-room", {url: url});
   }
   return redirect(req,res);
 }
