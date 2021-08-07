@@ -11,9 +11,9 @@
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
   <link rel="stylesheet" href="/css/report.css" />
-  <link rel="stylesheet" href="/css/signed-index.css" />
+  <link rel="stylesheet" href="/css/chat-room.css" />
   <link rel="stylesheet" href="/css/normalize.css" />
-  <title>Seguro - Home page</title>
+  <title>Seguro - Chatting Room</title>
 </head>
 
 <body>
@@ -28,26 +28,17 @@
         </div>
       </div>
 
-
       <div class="menu">
-        <a href="/signed-index">
-          <p class="menu-text">Home</p>
-          <i class="fas fa-home"></i>
+        <a href="" id="clear-chat">
+          <p class="menu-text">Clear Chat</p>
+          <i class="fas fa-eraser"></i>
         </a>
-        <a href="/chat-logs">
-          <p class="menu-text">Chat logs</p>
-          <i class="fas fa-comments"></i>
+        <a href="">
+          <p class="menu-text">Save Chat</p>
+          <i class="fas fa-file-download"></i>
         </a>
-        <a href="/edit-index">
-          <p class="menu-text">Edit account</p>
-          <i class="fas fa-user-edit"></i>
-        </a>
-        <a href="/contact-index">
-          <p class="menu-text">Contact us</p>
-          <i class="fas fa-inbox"></i>
-        </a>
-        <a href="/sign-out">
-          <p class="menu-text">Sign out</p>
+        <a href="">
+          <p class="menu-text">Leave Room</p>
           <i class="fas fa-sign-out-alt"></i>
         </a>
       </div>
@@ -68,20 +59,19 @@
     </nav>
 
     <main class="content">
-      <img src="/images/waves.png" alt="waves" id="waves" />
-      <p>
-        Create a chatting room and send your friend the generated link to
-        join the room
-      </p>
-      <div class="create-room">
-        <a href="/create-room" class="create-room-btn">Create Chatting Room</a>
+      <div id="messages">
+        <div id="message">
+          <b id="name">data[i].name: </b>
+          <b id="time">data[i].time</b><br>
+          <p id="text">data[i].message</p>
+        </div>
       </div>
-      <p id="room-description">
-        Create a chat room that can be accessed only by the creator and the invitee
-        once via link, chat logs have end to end encryption, room chat logs may be
-        saved only by creator's and invitee's decision via prompt notifications.
-      </p>
+      <form name="input-form" method="post" action="">
+        <textarea id="message-box" name="message" placeholder="Type a message . . ."></textarea>
+        <input type="button" name="send" value="Send" id="send" />
+      </form>
     </main>
+
   </div>
 
   <section class="report-form">
@@ -92,13 +82,14 @@
       <label for="bug-description">Description</label>
       <textarea name="bug-description" placeholder="Describe the bug in details ..." maxlength="250"
         required></textarea>
-      <textarea name="from" style="display:none">signed-index</textarea>
+      <textarea name="from" style="display:none">chat-room</textarea>
       <div class="button">
         <input type="button" value="Close" name="close" id="close" />
         <input type="submit" value="Report" name="report" id="report" />
       </div>
     </form>
   </section>
+
   <p id="bug-report-message" style="display:none">{{#if bugReportMessage}}
     {{bugReportMessage}}
     {{/if}}</p>
@@ -109,8 +100,10 @@
     }
   </script>
 
+  <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="/js/responsive-side-nav.js"></script>
+  <script src="/js/socket-messages.js"></script>
   <script src="/js/report.js"></script>
 </body>
 

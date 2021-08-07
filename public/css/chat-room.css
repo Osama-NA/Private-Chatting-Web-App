@@ -1,0 +1,326 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #dfe2fe65;
+  min-width: 300px;
+  overflow: hidden;
+  letter-spacing: 0.7px;
+}
+
+.container {
+  position: relative;
+  width: 55%;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+/* SIDE BAR NAVIGATION */
+
+.nav {
+  position: relative;
+  max-width: 270px;
+  min-width: 270px;
+  background-color: #2e2e30;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo {
+  width: 100%;
+  padding-left: 1.7rem;
+}
+
+.logo img {
+  width: 150px;
+  height: 160px;
+  padding-right: 0.5rem;
+}
+
+.burger {
+  position: absolute;
+  top: 4.3rem;
+  right: 2rem;
+  cursor: pointer;
+  color: transparent;
+}
+
+.burger .slice {
+  height: 4px;
+  width: 23px;
+  margin-bottom: 5px;
+  border-radius: 50px;
+  background-color: #ffffffe8;
+  transition: all 0.5s ease;
+}
+
+.burger:hover > .slice {
+  background-color: #7874f2;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 1.9rem;
+  width: 100%;
+}
+
+.menu a {
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+.menu p {
+  display: inline;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.911);
+}
+
+.menu i {
+  float: right;
+  position: relative;
+  top: 3px;
+  font-size: 17px;
+  padding-bottom: 1rem;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover i {
+  color: #7874f2;
+}
+
+.nav .footer {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer #report-bug a {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.911);
+}
+
+.footer #report-bug a i {
+  padding-left: 5px;
+  color: #7874f2;
+  font-size: 16px;
+}
+
+.footer #footer-text {
+  text-align: center;
+  padding-top: 1.5rem;
+  color: rgb(255, 255, 255);
+  font-size: 11px;
+}
+
+/* CONTENT */
+
+.content {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content h4 {
+  margin: 0 0 2rem;
+  color: #7874f2;
+  font-size: 14px;
+  text-align: center;
+}
+
+#messages {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  padding: 2rem 2rem 0;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+#message {
+  background-color: #dfe2fe65;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+#text {
+  margin: 1rem 0 0;
+  font-size: 18px;
+}
+
+#time {
+  float: right;
+}
+
+#time,
+#name {
+  color: #7874f2;
+  font-size: 14px;
+}
+
+.content form {
+  width: 100%;
+  height: 80px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #2e2e30;
+  border: 1.5px solid #2e2e30;
+}
+
+form #message-box,
+form #send {
+  min-height: 45px;
+  max-height: 45px;
+  padding: 0.6rem 1.5rem;
+  outline: none;
+  border: none;
+}
+form #message-box {
+  font-size: 20px;
+  width: 80%;
+  border-radius: 30px 0 0 30px;
+  resize: none;
+  overflow: hidden;
+}
+
+form #send {
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 0 30px 30px 0;
+  background-color: #7874f2;
+}
+
+/* MEDIA */
+
+@media (min-width: 1600px){
+  .container {
+    width: 1100px;
+  }
+  .header {
+    width: 1100px;
+  }
+}
+
+/* Tablet Screen */
+@media (max-width: 1100px) {
+  .container {
+    width: 100%;
+  }
+  .header {
+    width: 1100px;
+  }
+}
+
+/* Small Screens Media*/
+@media (max-width: 767px) {
+  .nav {
+    min-width: 55px;
+    max-width: 55px;
+  }
+  .menu p,
+  .nav .footer,
+  .logo img {
+    display: none;
+  }
+  .logo {
+    padding-left: 1rem;
+  }
+  .logo img {
+    width: 120px;
+    height: 130px;
+  }
+  .burger {
+    top: 3.3rem;
+    right: 1rem;
+  }
+  .burger .slice {
+    height: 4px;
+    width: 21px;
+  }
+  .menu {
+    padding: 8.3rem 1.1rem;
+  }
+  .menu p {
+    font-size: 16px;
+  }
+  .menu i {
+    float: right;
+    font-size: 15px;
+    padding-bottom: 0.5rem;
+  }
+  .footer #report-bug a {
+    font-size: 12px;
+  }
+  .footer #report-bug a i {
+    font-size: 13px;
+  }
+  .footer #footer-text {
+    font-size: 10px;
+  }
+
+  /* CONTENT */
+
+  .content h4 {
+    font-size: 11px;
+    margin: 0 0 1rem;
+  }
+  #messages {
+    padding: 1rem 1rem 0;
+  }
+
+  #time,
+  #name {
+    padding-bottom: 0.5rem;
+    font-size: 12px;
+  }
+
+  #text {
+    margin: 0.5rem 0 0;
+    font-size: 16px;
+  }
+  .content form {
+    height: 65px;
+  }
+
+  form #message-box,
+  form #send {
+    min-height: 40px;
+    max-height: 40px;
+    padding: 0.6rem 1rem;
+  }
+
+  form #message-box {
+    font-size: 16px;
+  }
+
+  form #send {
+    font-size: 13px;
+  }
+}

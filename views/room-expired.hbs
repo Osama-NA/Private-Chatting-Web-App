@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        img {
+            width: 65vw;
+            height: auto;
+            opacity: 0.5;
+        }
+
+        .container {
+            padding-top: 10rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        h1 {
+            padding: 1rem;
+            font-size: 54px;
+            color: #7874f2;
+        }
+
+        a {
+            font-size: 26px;
+            color: black;
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding-top: 4rem;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            a {
+                font-size: 18px;
+            }
+        }
+    </style>
+    <title>Seguro - Room Expired</title>
+</head>
+
+<body>
+    <img src="/images/expired.png" alt="Expired Room Background Image">
+    <div class="container">
+        <h1>Room Expired</h1>
+        <a href="/">Go back to home page</a>
+    </div>
+</body>
+
+</html>

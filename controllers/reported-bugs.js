@@ -30,7 +30,7 @@ exports.reportedBugs = (req, res) => {
         reports += report;
       });
 
-      res.render("bug-reports", { reports: reports });
+      return res.render("bug-reports", { reports: reports });
     } else {
       return res.render("bug-reports");
     }

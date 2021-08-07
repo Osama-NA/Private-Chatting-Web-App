@@ -1,9 +1,13 @@
 const express = require("express");
 const path = require("path");
+const http = require("http");
+const socket = require("socket.io");
 const pagesRoutes = require("./routes/pages");
 const databaseRoutes = require("./routes/db");
 
 const app = express();
+const server = http.createServer(app);
+const io = socket(server);
 const PORT = process.env.PORT || 3000;
 const publicDirectory = path.join(__dirname, "./public");
 
@@ -22,8 +26,12 @@ app.set("view engine", "hbs");
 app.use("/", pagesRoutes);
 app.use("/db", databaseRoutes);
 
+io.on("connection", (socket) => {
+  console.log(socket.id);
+});
+
 //Setting server to listen on port 'PORT'
-app.listen(PORT, (error) => {
+server.listen(PORT, (error) => {
   if (error) {
     console.log("Failed to listen on port " + PORT + ": " + error);
   } else {

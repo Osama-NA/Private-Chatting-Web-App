@@ -23,7 +23,7 @@ exports.contactForms = (req, res) => {
           `' /></form></td>|</tr>`;
         forms += form;
       });
-      res.render("contact-forms", { contactForms: forms });
+      return res.render("contact-forms", { contactForms: forms });
     } else {
       return res.render("contact-forms");
     }

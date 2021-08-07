@@ -17,7 +17,7 @@ exports.viewUsers = (req, res) => {
                 + id + `' /></form></td>|</tr>`;
                 users += user;
             });
-            res.render("view-users", {users: users});
+            return res.render("view-users", {users: users});
         }else{
             return res.render("view-users");
         }

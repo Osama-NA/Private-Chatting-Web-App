@@ -1,0 +1,80 @@
+body{
+    background-color: #dfe2fe;
+    font-family: 'Ubuntu', sans-serif;
+    overflow: hidden;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    width: auto;
+    background-color: rgb(255, 255, 255);
+    border: 3px solid #383838;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    margin: 1rem;
+}
+
+label{
+    color: #7874f2;
+    font-size: 32px;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+input{
+    border: 2px solid #383838;
+    font-size: 18px;
+    padding: 1rem;
+    margin: 1rem 0;
+    outline: none;
+}
+.inputs{
+    display: flex;
+    flex-direction: row;
+}
+#name{
+    width: 70%;
+    border-radius: 10px 0 0 10px;
+    border-right: none;
+}
+
+#submit{
+    width: 100px;
+    color: #fff;
+    background-color: #383838;
+    border-radius: 0 10px 10px 0;
+    border-left: none;
+}
+
+a{
+    color: #7874f2;
+    padding: 1rem 0 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+@media (max-width: 767px){
+    form{
+        padding: 1.5rem 2rem;
+    }
+    label{
+        font-size: 24px;
+        padding-bottom: 0.5rem;
+    }
+    a{
+        font-size: 14px;
+        padding: 0.5rem 0 0;
+    }
+    input{
+        font-size: 16px;
+        padding: 0.5rem;
+    }
+}
