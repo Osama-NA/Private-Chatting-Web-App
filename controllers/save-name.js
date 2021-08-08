@@ -8,7 +8,7 @@ exports.saveName = (req, res) => {
 
   //if url access is set then redirect second user to chat room otherwise redirect first user to waiting roomData
   
-  if (urlAccess) {
+  if (urlAccess === "true") {
     return res.redirect("/chat-room")
   }
 
