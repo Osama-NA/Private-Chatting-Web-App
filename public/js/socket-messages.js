@@ -19,13 +19,12 @@ socket.on("message", (message) => {
 chatForm.addEventListener("submit", (Event) => {
   Event.preventDefault();
 
-  //Get Message Text
   const message = Event.target.elements.message.value;
 
   //Emit Message To Server
-  socket.emit("chatMessage", message);
+  socket.emit("chat-message", message);
 
-  //Clear Input
+  //Clear and focus input field
   Event.target.elements.message.value= '';
   Event.target.elements.message.focus();
 });

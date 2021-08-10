@@ -5,11 +5,7 @@ const socket = require("socket.io");
 const pagesRoutes = require("./routes/pages");
 const databaseRoutes = require("./routes/db");
 const formatMessage = require("./utils/messages");
-const {
-  userJoin,
-  getCurrentUser,
-  userLeave
-} = require("./utils/room-users");
+const { userJoin, getCurrentUser, userLeave } = require("./utils/room-users");
 
 const chatBot = "Seguro Bot";
 const app = express();
@@ -34,28 +30,24 @@ app.use("/", pagesRoutes);
 app.use("/db", databaseRoutes);
 
 io.on("connection", (socket) => {
+
+  //When a user joins chat room
   socket.on("join-room", ({ id, username }) => {
     const user = userJoin(socket.id, username, id);
 
-    //Joining room
     socket.join(user.room);
 
-    //Welcome user
     socket.emit(
       "message",
-      formatMessage(chatBot, "Welcome to Seguro Chatting!")
-    );
+      formatMessage(chatBot, "Welcome to Seguro Chatting!"));
 
-    socket.broadcast
-      .to(user.room)
-      .emit(
-        "message",
-        formatMessage(chatBot, `${user.name} has joined the chat`)
-      );
+    socket.broadcast.to(user.room).emit(
+      "message",
+      formatMessage(chatBot, `${user.name} has joined the chat`));
   });
 
-  //Listen For Chat Message
-  socket.on("chatMessage", (message) => {
+  //Listen For Chat Messages
+  socket.on("chat-message", (message) => {
     const user = getCurrentUser(socket.id);
 
     io.to(user.room).emit("message", formatMessage(user.name, message));
@@ -68,13 +60,11 @@ io.on("connection", (socket) => {
     if (user) {
       io.to(user.room).emit(
         "message",
-        formatMessage(chatBot, `${user.username} has left the chat`)
-      );
+        formatMessage(chatBot, `${user.username} has left the chat`));
     }
   });
 
 });
-
 
 //Setting server to listen on port 'PORT'
 server.listen(PORT, (error) => {
