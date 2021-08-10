@@ -60,15 +60,10 @@
 
     <main class="content">
       <div id="messages">
-        <div id="message">
-          <b id="name">data[i].name: </b>
-          <b id="time">data[i].time</b><br>
-          <p id="text">data[i].message</p>
-        </div>
       </div>
-      <form name="input-form" method="post" action="">
+      <form id="chat-form">
         <textarea id="message-box" name="message" placeholder="Type a message . . ."></textarea>
-        <input type="button" name="send" value="Send" id="send" />
+        <input type="submit" name="send" value="Send" id="send" />
       </form>
     </main>
 
@@ -100,6 +95,9 @@
     }
   </script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"
+    integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ=="
+    crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="/js/responsive-side-nav.js"></script>

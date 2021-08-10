@@ -155,18 +155,22 @@ body {
   width: 100%;
   background-color: rgb(255, 255, 255);
   padding: 2rem 2rem 0;
+  word-wrap: break-word;
   overflow: scroll;
   overflow-x: hidden;
 }
+
 #message {
   background-color: #dfe2fe65;
   padding: 1rem 1.5rem;
   border-radius: 15px;
   margin-bottom: 1rem;
 }
+
 #text {
   margin: 1rem 0 0;
   font-size: 18px;
+  word-break: break-all;
 }
 
 #time {
@@ -294,7 +298,6 @@ form #send {
   #messages {
     padding: 1rem 1rem 0;
   }
-
   #time,
   #name {
     padding-bottom: 0.5rem;

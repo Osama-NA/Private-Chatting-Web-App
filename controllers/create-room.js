@@ -11,7 +11,7 @@ exports.createRoom = (req, res) => {
   //if user is not authenticated redirect to get name page
   if (req.isAuthenticated()) {
     const user = userInfo.getItem("username");
-    room.setUser(user);
+    room.setUsername(user);
     return res.redirect("/waiting-room");
   }
   
