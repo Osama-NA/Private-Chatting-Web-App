@@ -1,6 +1,7 @@
 const socket = io();
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector("#messages");
+const clear = document.querySelector("#clear-chat");
 
 //Get room id and user's name from query string in search bar
 const {id: id, username: username} = Qs.parse(location.search, {ignoreQueryPrefix: true});
@@ -28,6 +29,12 @@ chatForm.addEventListener("submit", (Event) => {
   Event.target.elements.message.value= '';
   Event.target.elements.message.focus();
 });
+
+//Clear Chat
+clear.addEventListener("click", () => {
+  chatMessages.innerHTML = "";
+  window.alert("Chat messages cleared");
+})
 
 //Output Message To DOM
 function outputMessage(message) {

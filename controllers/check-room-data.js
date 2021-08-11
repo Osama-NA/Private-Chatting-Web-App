@@ -27,36 +27,26 @@ exports.checkRoomData = (req, res, next) => {
 //If access by user two, inset new room chat rooms table with access_one set to 0 and access_two set to 1
 function createOrUpdateRoom(roomID, roomAccess, res) {
   if (roomAccess == "user one") {
-    db.query(
-      "UPDATE chat_rooms SET access_one = 1 WHERE room_id= ?", [roomID],() => {
-        console.log("User one joined chat room");
-      }
-    );
+    db.query("UPDATE chat_rooms SET access_one = 1 WHERE room_id= ?", [roomID],() => {
+        db.query("UPDATE chat_rooms SET no_of_access = 2 WHERE room_id= ?", [roomID],() => {
+            console.log("User one joined chat room");
+        });
+    });
   } else if (roomAccess == "user two") {
-    //Before Setting access by user two, check if user two already joined
-    checkUserTwoAlreadyJoined(roomID, res);
-    db.query(
-      "INSERT INTO chat_rooms SET ?",
-      { room_id: roomID, access_one: 0, access_two: 1 }, () => {
-        console.log("User two joined chat room");
-      }
-    );
-  }  
-}
 
-//Checks if access_one and access_two are already set
-//If they are then this is a third access so the user is redirected to room expired page
-function checkUserTwoAlreadyJoined(id, res) {
-  db.query(
-    "SELECT access_two,access_one FROM chat_rooms WHERE room_id= ?",
-    [id],
-    (err, results) => {
-      if (results.length > 0) {
-        if (results[0].access_two === 1 && results[0].access_one === 1)
-          return res.redirect("/room-expired");
-      }
-    }
-  );
+    //Before Setting access by user two, check if user two already joined
+    db.query("SELECT access_two,access_one FROM chat_rooms WHERE room_id= ?", [roomID], (err, results) => {
+        if (results.length > 0) {
+          if (results[0].access_two === 1 && results[0].access_one === 1){
+            room.setID(undefined);
+            return res.redirect("/room-expired");
+          }
+        }
+        db.query("INSERT INTO chat_rooms SET ?", {room_id: roomID, access_one: 0, access_two: 1, no_of_access: 1}, () => {
+          console.log("User two joined chat room");
+        });
+    });
+  }  
 }
 
 function redirect(req, res) {
