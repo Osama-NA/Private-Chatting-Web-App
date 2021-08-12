@@ -63,10 +63,6 @@ router.get("/room-expired", (req, res) => {
   res.render("room-expired");
 });
 
-//Waiting Room
-const waitingRoomController = require("../controllers/waiting-room");
-router.get("/waiting-room", waitingRoomController.waitingRoom);
-
 //Sign Out
 router.get("/sign-out", (req, res) => {
   userInfo.deleteUser();
@@ -74,43 +70,40 @@ router.get("/sign-out", (req, res) => {
   res.redirect("/sign-in");
 });
 
+//Waiting Room
+const waitingRoomController = require("../controllers/waiting-room");
+router.get("/waiting-room", waitingRoomController.waitingRoom);
+
 //View Users
 const viewUsersController = require("../controllers/view-users");
-router.get(
-  "/view-users",
-  checkAuthenticatedAdmin,
-  viewUsersController.viewUsers
-);
+router.get("/view-users", checkAuthenticatedAdmin, viewUsersController.viewUsers);
 
 //Contact Forms
 const contactFormsController = require("../controllers/contact-forms");
-router.get(
-  "/contact-forms",
-  checkAuthenticatedAdmin,
-  contactFormsController.contactForms
-);
+router.get("/contact-forms", checkAuthenticatedAdmin, contactFormsController.contactForms);
 
 //Reported Bugs
 const reportedBugsController = require("../controllers/reported-bugs");
-router.get(
-  "/bug-reports",
-  checkAuthenticatedAdmin,
-  reportedBugsController.reportedBugs
-);
+router.get("/bug-reports", checkAuthenticatedAdmin, reportedBugsController.reportedBugs);
+
+//Chat Logs
+const chatLogsController = require("../controllers/chat-logs");
+router.get("/admin-chat-logs", checkAuthenticatedAdmin, chatLogsController.chatLogs);
+router.get("/chat-logs", checkAuthenticated, chatLogsController.chatLogs);
 
 //Creates Room id then redirects to get-name page or waiting-room page
 const createRoomController = require("../controllers/create-room");
 router.get("/create-room", createRoomController.createRoom);
 
-//Get Name
-router.get("/get-name", (req, res) => {
-  res.render("get-name");
-});
-
 //When redirected to get-name page, checkSecondAccessController checks if it's the second user i.e the user who joined through link and sets the room id and access for second user 
 const checkSecondAccessController = require("../controllers/check-second-access");
 router.get("/url-get-name", checkSecondAccessController.checkSecondAccess, (req, res) => {
   res.render("url-get-name");
+});
+
+//Get Name
+router.get("/get-name", (req, res) => {
+  res.render("get-name");
 });
 
 //Save Name For Chat Room

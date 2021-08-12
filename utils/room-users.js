@@ -88,6 +88,10 @@ function saveChat(id){
     const user = getCurrentUser(id);
     const room = user.room;
     const email = userInfo.getItem("email");
+    const dateObj = new Date();
+    const date = ("0" + dateObj.getDate()).slice(-2);
+    const month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+    const year = dateObj.getFullYear();
 
     db.query("SELECT * FROM messages WHERE room_id = ?", [room], (error, results) => {
       if(results.length > 0){
@@ -99,6 +103,7 @@ function saveChat(id){
             username: username,
             time: time,
             message: message,
+            date: year + "-" + month + "-" + date
           });
         });
       }
