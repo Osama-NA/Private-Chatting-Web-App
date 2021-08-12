@@ -1,5 +1,6 @@
 const room = require("../utils/room");
 const db = require("../utils/db-connection.js");
+const userInfo = require("../utils/user-info");
 
 //checks whether the room id and username are set and checks if access one or two (user-1/2) are set,
 //if any is not set then user is redirected to home page otherwise to chat room
@@ -16,7 +17,7 @@ exports.checkRoomData = (req, res, next) => {
 
   if (roomID && roomAccess && roomUsername) {
     createOrUpdateRoom(roomID, roomAccess, res);
-    room.setAccessTwo("false");
+    room.setAccessTwo("false"); //Needed in localhost server to allow access by user one
     return next();
   }
 
@@ -37,14 +38,13 @@ function createOrUpdateRoom(roomID, roomAccess, res) {
     //Before Setting access by user two, check if user two already joined
     db.query("SELECT access_two,access_one FROM chat_rooms WHERE room_id= ?", [roomID], (err, results) => {
         if (results.length > 0) {
-          if (results[0].access_two === 1 && results[0].access_one === 1){
-            room.setID(undefined);
             return res.redirect("/room-expired");
-          }
         }
-        db.query("INSERT INTO chat_rooms SET ?", {room_id: roomID, access_one: 0, access_two: 1, no_of_access: 1}, () => {
-          console.log("User two joined chat room");
-        });
+        if(room.getRoom()["id"] != undefined){
+          db.query("INSERT INTO chat_rooms SET ?", {room_id: roomID, access_one: 0, access_two: 1, no_of_access: 1}, () => {
+            console.log("User two joined chat room");
+          });
+        }
     });
   }  
 }

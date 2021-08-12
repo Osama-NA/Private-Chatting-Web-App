@@ -102,20 +102,33 @@ router.get(
 const createRoomController = require("../controllers/create-room");
 router.get("/create-room", createRoomController.createRoom);
 
-//When redirected to get-name page, checkSecondAccessController checks if it's the second user i.e the user who joined through link and sets the room id for second user 
-const checkSecondAccessController = require("../controllers/check-second-access");
-router.get("/get-name", checkSecondAccessController.checkSecondAccess, (req, res) => {
+//Get Name
+router.get("/get-name", (req, res) => {
   res.render("get-name");
+});
+
+//When redirected to get-name page, checkSecondAccessController checks if it's the second user i.e the user who joined through link and sets the room id and access for second user 
+const checkSecondAccessController = require("../controllers/check-second-access");
+router.get("/url-get-name", checkSecondAccessController.checkSecondAccess, (req, res) => {
+  res.render("url-get-name");
 });
 
 //Save Name For Chat Room
 const saveNameController = require("../controllers/save-name");
 router.post("/save-name", saveNameController.saveName);
 
+//Sign in then join chat room
+const chatRoomSignInController = require("../controllers/chat-room-sign-in");
+router.get("/chat-room-sign-in", chatRoomSignInController.chatRoomSignIn);
+
 //Check if required data is available then redirect to chat room
 const checkRoomDataController = require("../controllers/check-room-data");
 router.get("/chat-room", checkRoomDataController.checkRoomData, (req, res) => {
-  res.render("chat-room");
+  if (req.isAuthenticated()) {
+    res.render("signed-chat-room");
+  } else {
+    res.render("chat-room");
+  }
 });
 
 module.exports = router;

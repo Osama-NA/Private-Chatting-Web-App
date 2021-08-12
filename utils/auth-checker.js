@@ -1,4 +1,4 @@
-const userInfo = require("../utils/user-info");
+const userInfo = require("./user-info");
 
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated() && userInfo.getItem("role") === "basic") {

@@ -1,8 +1,9 @@
-const db = require("../utils/db-connection.js");
-const room = require("../utils/room.js");
-
+const db = require("./db-connection.js");
+const room = require("./room.js");
+const userInfo = require("./user-info");
 const users = [];
 
+//Loads roam users when user joins room
 db.query("SELECT * FROM room_users", (error, results) => {
   if (error) {
     console.log("Failed to select room users: " + error);
@@ -44,22 +45,24 @@ function userLeave(id) {
   //Remove User From room_users Table
   db.query("DELETE FROM room_users WHERE id = ?", [id]);
 
-  //Remove Room From chat_rooms Table If Both Users Left The Room and delete messages from messages table
+  //Remove Room From chat_rooms Table If Both Users Left The Room, and delete messages from messages table
   const user = users.find((user) => user.id === id);
-  db.query("SELECT no_of_access FROM chat_rooms WHERE room_id = ?", [user.room],
-    (error, results) => {
-      if(results){
-        if (results[0]["no_of_access"] === 2) {
-          db.query("UPDATE chat_rooms SET no_of_access = 1 WHERE room_id= ?", [
-            user.room,
-          ]);
-        } else if (results[0]["no_of_access"] === 1) {
-          db.query("DELETE FROM chat_rooms WHERE room_id = ?", [user.room]);
-          db.query("DELETE FROM messages WHERE room_id = ?", [user.room]);
+  if(user){
+    db.query("SELECT no_of_access FROM chat_rooms WHERE room_id = ?", [user.room],
+        (error, results) => {
+          if(results){
+            if (results[0]["no_of_access"] === 2) {
+              db.query("UPDATE chat_rooms SET no_of_access = 1 WHERE room_id= ?", [user.room]);
+            } else if (results[0]["no_of_access"] === 1) {
+              db.query("DELETE FROM chat_rooms WHERE room_id = ?", [user.room]);
+              db.query("DELETE FROM messages WHERE room_id = ?", [user.room]);
+              room.deleteRoom(); //Unset all values of roomInfo in /utils/room
+            }
+          }
         }
-      }
-    }
-  ); 
+    ); 
+  }
+  
 
   const index = users.findIndex((user) => user.id === id);
   room.setID(undefined); //To disable user from joining a chat room again before creating a new room
@@ -79,9 +82,17 @@ function saveMessage(room, message){
   });
 }
 
+//Create
+function saveChat(id){
+  if (userInfo.getItem("email")){
+    console.log("save chat: " + id);
+  }
+}
+
 module.exports = {
   userJoin,
   getCurrentUser,
   userLeave,
-  saveMessage
+  saveMessage,
+  saveChat
 };

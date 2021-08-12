@@ -5,7 +5,7 @@ const socket = require("socket.io");
 const pagesRoutes = require("./routes/pages");
 const databaseRoutes = require("./routes/db");
 const formatMessage = require("./utils/messages");
-const { userJoin, getCurrentUser, userLeave, saveMessage } = require("./utils/room-users");
+const { userJoin, getCurrentUser, userLeave, saveMessage, saveChat } = require("./utils/room-users");
 
 const app = express();
 const server = http.createServer(app);
@@ -48,6 +48,11 @@ io.on("connection", (socket) => {
     const user = getCurrentUser(socket.id);
     saveMessage(user.room, formatMessage(user.name, message));
     io.to(user.room).emit("message", formatMessage(user.name, message));
+  });
+
+  //Runs when a user clicks save chat
+  socket.on("save-chat", () => {
+    saveChat(socket.id);
   });
 
   //Runs When Client Disconnects

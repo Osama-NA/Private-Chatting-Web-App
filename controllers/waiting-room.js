@@ -1,5 +1,6 @@
 const room = require("../utils/room");
 const db = require("../utils/db-connection.js");
+const userInfo = require("../utils/user-info");
 
 //Generates a url with room id for second user if room id and username are set
 exports.waitingRoom = (req, res) => {
@@ -16,7 +17,8 @@ exports.waitingRoom = (req, res) => {
     );
 
     room.setAccessOne("true");
-    const url = `${req.protocol}://${req.get("host")}/get-name?id=${id}&second=true`;
+    //URL Used By Second User To Join Chat Room
+    const url = `${req.protocol}://${req.get("host")}/url-get-name?id=${id}&second=true`;
     return res.render("waiting-room", { url: url });
   }
   
