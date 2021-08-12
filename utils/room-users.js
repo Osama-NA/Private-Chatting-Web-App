@@ -82,10 +82,27 @@ function saveMessage(room, message){
   });
 }
 
-//Create
+//Gets all the temporary messages in messages table with current room_id then saves it in saved_messages table
 function saveChat(id){
   if (userInfo.getItem("email")){
-    console.log("save chat: " + id);
+    const user = getCurrentUser(id);
+    const room = user.room;
+    const email = userInfo.getItem("email");
+
+    db.query("SELECT * FROM messages WHERE room_id = ?", [room], (error, results) => {
+      if(results.length > 0){
+        Object.keys(results).forEach((key) => {
+          let { room_id, username, time, message } = results[key];
+          db.query("INSERT INTO saved_messages SET ?", {
+            user_email: email,
+            room_id: room_id,
+            username: username,
+            time: time,
+            message: message,
+          });
+        });
+      }
+    });
   }
 }
 

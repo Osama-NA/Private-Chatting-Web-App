@@ -80,6 +80,7 @@ body {
 }
 
 .menu a {
+  cursor: pointer;
   text-decoration: none;
   margin-bottom: 1.5rem;
 }

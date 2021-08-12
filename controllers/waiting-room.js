@@ -17,6 +17,7 @@ exports.waitingRoom = (req, res) => {
     );
 
     room.setAccessOne("true");
+    
     //URL Used By Second User To Join Chat Room
     const url = `${req.protocol}://${req.get("host")}/url-get-name?id=${id}&second=true`;
     return res.render("waiting-room", { url: url });
