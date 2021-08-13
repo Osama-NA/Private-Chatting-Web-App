@@ -6,7 +6,7 @@ exports.deleteChat = (req, res) => {
   const email = userInfo.getItem("email");
   const role = userInfo.getItem("role");
 
-  if (id && email) {
+  if (id && email && role) {
     db.query(`DELETE FROM saved_messages WHERE room_id = '${id}' AND user_email = '${email}'`);
     return redirect(role, res);
   }

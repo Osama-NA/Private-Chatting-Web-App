@@ -124,4 +124,12 @@ router.post(
   deleteChatController.deleteChat
 );
 
+//Download Chat Log
+const downloadChatController = require("../controllers/download-chat");
+router.post(
+  "/download-chat",
+  checkAuthenticatedBasicOrAdmin,
+  downloadChatController.downloadChat
+);
+
 module.exports = router;
