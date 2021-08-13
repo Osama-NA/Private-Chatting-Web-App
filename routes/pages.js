@@ -6,6 +6,7 @@ const userInfo = require("../utils/user-info");
 const {
   checkAuthenticated,
   checkAuthenticatedAdmin,
+  checkAuthenticatedBasicOrAdmin,
   checkNotAuthenticated,
 } = require("../utils/auth-checker");
 require("dotenv").config();

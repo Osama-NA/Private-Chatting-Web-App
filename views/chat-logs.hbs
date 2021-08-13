@@ -81,7 +81,7 @@
             <th><div>Download</div></th>
             <th><div>Delete</div></th>
           </tr>
-
+          
           <!-- /controllers/chat-logs renders this page and sends saved chat logs as a message then chatLogs string is formatted then printed-->
 
           <b id="chat-logs" style="display:none">{{#if chatLogs}}
@@ -105,6 +105,16 @@
       </main>
     </div>
 
+    <p id="chat-log-message" style="display:none">{{#if chatLogMessage}}
+      {{chatLogMessage}}
+    {{/if}}</p>
+    <script>
+      let chatLogMessage = document.getElementById("chat-log-message").innerHTML;
+      if(chatLogMessage !== ""){
+        window.alert(chatLogMessage);
+      }
+    </script>
+
     <section class="report-form">
       <form action="/db/bug-report" method="post" class="report-form-content">
         <h3>Report A Bug</h3>
@@ -124,6 +134,7 @@
         </div>
       </form>
     </section>
+
     <p id="bug-report-message" style="display:none">{{#if bugReportMessage}}
       {{bugReportMessage}}
     {{/if}}</p>

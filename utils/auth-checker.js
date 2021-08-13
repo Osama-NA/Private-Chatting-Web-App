@@ -14,6 +14,13 @@ function checkAuthenticatedAdmin(req, res, next) {
   res.redirect("/sign-in");
 }
 
+function checkAuthenticatedBasicOrAdmin(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/sign-in");
+}
+
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     let role = userInfo.getItem("role");
@@ -30,5 +37,6 @@ function checkNotAuthenticated(req, res, next) {
 module.exports = {
     checkAuthenticated,
     checkAuthenticatedAdmin,
+    checkAuthenticatedBasicOrAdmin,
     checkNotAuthenticated
 }

@@ -92,6 +92,9 @@ function saveChat(id){
     const date = ("0" + dateObj.getDate()).slice(-2);
     const month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
     const year = dateObj.getFullYear();
+    
+    //Delete previously saved messages, to not duplicate same messages
+    db.query(`DELETE FROM saved_messages WHERE room_id = '${room}' AND user_email = '${email}'`);
 
     db.query("SELECT * FROM messages WHERE room_id = ?", [room], (error, results) => {
       if(results.length > 0){

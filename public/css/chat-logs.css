@@ -174,7 +174,19 @@ td {
   height: 50px;
 }
 .button {
+  position: relative;
+}
+.button input{
   cursor: pointer;
+  position: absolute;
+  overflow: hidden;
+  height: 35px;
+  width: 35px;
+  top: -8px;
+  left: 25px;
+  color: transparent;
+  background-color: transparent;
+  border: none;
 }
 i {
   font-size: 18px;
@@ -272,6 +284,10 @@ i {
     min-width: 50px;
   }
 
+  .button input{
+    top: -9px;
+    left: 0px;
+  }
   i {
     font-size: 16px;
   }

@@ -7,6 +7,7 @@ const methodOverride = require("method-override");
 const {
   checkAuthenticated,
   checkAuthenticatedAdmin,
+  checkAuthenticatedBasicOrAdmin,
   checkNotAuthenticated,
 } = require("../utils/auth-checker");
 
@@ -113,6 +114,14 @@ router.post(
   "/bug-not-solved",
   checkAuthenticatedAdmin,
   markBugNotSolvedController.bugNotSolved
+);
+
+//Delete Chat Log
+const deleteChatController = require("../controllers/delete-chat");
+router.post(
+  "/delete-chat",
+  checkAuthenticatedBasicOrAdmin,
+  deleteChatController.deleteChat
 );
 
 module.exports = router;

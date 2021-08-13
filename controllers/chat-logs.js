@@ -17,8 +17,12 @@ exports.chatLogs = (req, res) => {
           const date = rows[key]["date"];
 
           const chatLog = `<tr><td><div>${room_id}</div></td><td><div>${date}</div></td>
-                <td><div class="button download"><i class="fas fa-file-download"></i></div></td>
-                <td><div class="button delete"><i class="fas fa-trash-alt"></i></div></td>|</tr>`;
+          <td><div class="button download"><form action="/db/download-chat" method="post">
+          <input type="submit" id="download" name="download" value="${room_id}"></form>
+          <i class="fas fa-file-download"></i></div></td>
+          <td><div class="button delete"><form action="/db/delete-chat" method="post">
+          <input type="submit" id="delete" name="delete" value="${room_id}"></form>
+          <i class="fas fa-trash-alt"></i></div></td>|</tr>`;
           chatLogs += chatLog;
         });
         return redirect(chatLogs, role, res);
