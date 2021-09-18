@@ -10,7 +10,7 @@ function storeUsers(){
 
 const getUsers =()=> {
     pool.getConnection((error, connection) => {
-        if(error) console.log("Failed to get pool connection . . .");
+        if (error) console.log("Failed to get pool connection . . ." + error);
 
         connection.query("SELECT * FROM users", (error, results) => {
             connection.release();
@@ -33,7 +33,7 @@ const getUsers =()=> {
 
 const getAdmins =()=> {
     pool.getConnection((error, connection) => {
-        if (error) console.log("Failed to get pool connection . . .");
+        if (error) console.log("Failed to get pool connection . . ."+ error);
 
         pool.query("SELECT * FROM admin", (error, results) => {
             connection.release();

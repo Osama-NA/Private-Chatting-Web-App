@@ -5,7 +5,7 @@ const users = [];
 
 //Loads roam users when user joins room
 pool.getConnection((error, connection) => {
-  if(error) console.log("Failed to get pool connection . . .");
+  if (error) console.log("Failed to get pool connection . . ." + error);
 
   connection.query("SELECT * FROM room_users", (error, results) => {
     connection.release();
@@ -30,7 +30,7 @@ function userJoin(id, name, room) {
   const user = { id, name, room };
 
   pool.getConnection((error, connection) => {
-    if (error) console.log("Failed to get pool connection . . .");
+    if (error) console.log("Failed to get pool connection . . ." + error);
 
     connection.query("INSERT INTO room_users SET ?", {
       id: id,
@@ -54,7 +54,7 @@ function getCurrentUser(id) {
 //User Leaves Chat
 function userLeave(id) {
   pool.getConnection((error, connection) => {
-    if (error) console.log("Failed to get pool connection . . .");
+    if (error) console.log("Failed to get pool connection . . ." + error);
 
     //Remove User From room_users Table
     connection.query("DELETE FROM room_users WHERE id = ?", [id], (error) => {
@@ -100,7 +100,7 @@ function userLeave(id) {
 //Every message sent is saved in messages table until users leave room
 function saveMessage(room, message) {
   pool.getConnection((error, connection) => {
-    if(error) console.log("Failed to get pool connection . . .");
+    if (error) console.log("Failed to get pool connection . . ." + error);
 
     connection.query("INSERT INTO messages SET ?", {
       room_id: room,
@@ -126,7 +126,7 @@ function saveChat(id) {
     const year = dateObj.getFullYear();
 
     pool.getConnection((error, connection) => {
-      if (error) console.log("Failed to get pool connection . . .");
+      if (error) console.log("Failed to get pool connection . . ." + error);
 
       //Delete previously saved messages, to not duplicate same messages
       connection.query(`DELETE FROM saved_messages WHERE room_id = '${room}' AND user_email = '${email}'`, (error) => {

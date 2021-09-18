@@ -28,7 +28,7 @@ exports.checkRoomData = (req, res, next) => {
 //If access by user two, inset new room chat rooms table with access_one set to 0 and access_two set to 1
 function createOrUpdateRoom(roomID, roomAccess, res) {
   pool.getConnection((error, connection) => {
-    if (error) console.log("Failed to get pool connection . . .");
+    if (error) console.log("Failed to get pool connection . . ." + error);
 
     if (roomAccess == "user one") {
       connection.query("UPDATE chat_rooms SET access_one = 1 WHERE room_id= ?", [roomID], (error) => {

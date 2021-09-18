@@ -14,7 +14,7 @@ exports.addAdmin = async (req, res) => {
           const hashedPassword = await bcrypt.hash(password, 10);
 
           pool.getConnection((error, connection) => {
-            if (error) console.log("Failed to get pool connection . . .");
+            if (error) console.log("Failed to get pool connection . . ." + error);
 
             connection.query("SELECT * FROM admin WHERE email = ?", [email], (error, results) => {
               if (error) {
