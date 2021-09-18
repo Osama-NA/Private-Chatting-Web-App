@@ -13,7 +13,10 @@ exports.addAdmin = async (req, res) => {
         try {
           const hashedPassword = await bcrypt.hash(password, 10);
 
-          pool.query("SELECT * FROM admin WHERE email = ?", [email], (error, results) => {
+          pool.getConnection((error, connection) => {
+            if (error) console.log("Failed to get pool connection . . .");
+
+            connection.query("SELECT * FROM admin WHERE email = ?", [email], (error, results) => {
               if (error) {
                 return res.render("add-admin", {
                   addAdminMessage: "Failed to select users emails: " + error,
@@ -21,18 +24,19 @@ exports.addAdmin = async (req, res) => {
               }
 
               if (results.length === 0) {
-                pool.query( "INSERT INTO admin SET ?",
+                connection.query("INSERT INTO admin SET ?",
                   {
                     email: email,
                     username: username,
                     password: hashedPassword,
                   }, (error) => {
+                    connection.release();
                     if (error) {
                       return res.render("add-admin", {
                         addAdminMessage: "Failed to add admin: " + error,
                       });
                     }
-                    
+
                     return res.render("add-admin", {
                       addAdminMessage: "New admin added successfully",
                     });
@@ -44,7 +48,8 @@ exports.addAdmin = async (req, res) => {
                 });
               }
             }
-          );
+            );
+          })
         } catch (e) {
           return res.render("add-admin", {
             addAdminMessage: e,

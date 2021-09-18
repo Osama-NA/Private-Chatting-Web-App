@@ -14,12 +14,9 @@ const PORT = process.env.PORT || 3000;
 const publicDirectory = path.join(__dirname, "./public");
 const chatBot = "Seguro Bot";
 
+app.enable('trust proxy');
 app.use(express.static(publicDirectory));
-
-//Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: false }));
-
-//To allow our application to Parse JSON
 app.use(express.json());
 
 //Setting view engine to hbs to handle hbs files
@@ -65,10 +62,6 @@ io.on("connection", (socket) => {
 });
 
 //Setting server to listen on port 'PORT'
-app.listen(PORT, (error) => {
-  if (error) {
-    console.log("Failed to listen on port " + PORT + ": " + error);
-  } else {
-    console.log("Listening on port " + PORT);
-  }
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });

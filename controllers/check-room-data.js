@@ -27,34 +27,39 @@ exports.checkRoomData = (req, res, next) => {
 //If access by user one, update access_one in chat rooms table 
 //If access by user two, inset new room chat rooms table with access_one set to 0 and access_two set to 1
 function createOrUpdateRoom(roomID, roomAccess, res) {
-  if (roomAccess == "user one") {
-    pool.query("UPDATE chat_rooms SET access_one = 1 WHERE room_id= ?", [roomID], (error) => {
-      if (error) console.log("Failed to update chat_rooms access_one: " + error);
+  pool.getConnection((error, connection) => {
+    if (error) console.log("Failed to get pool connection . . .");
 
-      pool.query("UPDATE chat_rooms SET no_of_access = 2 WHERE room_id= ?", [roomID], (error) => {
-        if (error) console.log("Failed to update chat_rooms no_of_access: " + error);
+    if (roomAccess == "user one") {
+      connection.query("UPDATE chat_rooms SET access_one = 1 WHERE room_id= ?", [roomID], (error) => {
+        if (error) console.log("Failed to update chat_rooms access_one: " + error);
 
-        console.log("User one joined chat room");
-      });
-    });
-  } else if (roomAccess == "user two") {
+        connection.query("UPDATE chat_rooms SET no_of_access = 2 WHERE room_id= ?", [roomID], (error) => {
+          connection.release();
+          if (error) console.log("Failed to update chat_rooms no_of_access: " + error);
 
-    //Before Setting access by user two, check if user two already joined
-    pool.query("SELECT access_two,access_one FROM chat_rooms WHERE room_id= ?", [roomID], (error, results) => {
-      if (error) console.log("Failed to select access_two, access_one from chat_rooms: " + error);
-
-      if (results.length > 0) {
-        return res.redirect("/room-expired");
-      }
-      if (room.getRoom()["id"] != undefined) {
-        pool.query("INSERT INTO chat_rooms SET ?", { room_id: roomID, access_one: 0, access_two: 1, no_of_access: 1 }, (error) => {
-          if (error) console.log("Failed to insert into chat_rooms: " + error);
-
-          console.log("User two joined chat room");
+          console.log("User one joined chat room");
         });
-      }
-    });
-  }
+      });
+    } else if (roomAccess == "user two") {
+      //Before Setting access by user two, check if user two already joined
+      connection.query("SELECT access_two,access_one FROM chat_rooms WHERE room_id= ?", [roomID], (error, results) => {
+        if (error) console.log("Failed to select access_two, access_one from chat_rooms: " + error);
+
+        if (results.length > 0) {
+          return res.redirect("/room-expired");
+        }
+        if (room.getRoom()["id"] != undefined) {
+          connection.query("INSERT INTO chat_rooms SET ?", { room_id: roomID, access_one: 0, access_two: 1, no_of_access: 1 }, (error) => {
+            connection.release();
+            if (error) console.log("Failed to insert into chat_rooms: " + error);
+
+            console.log("User two joined chat room");
+          });
+        }
+      });
+    }
+  })
 }
 
 function redirect(req, res) {
