@@ -65,7 +65,7 @@ io.on("connection", (socket) => {
 });
 
 //Setting server to listen on port 'PORT'
-server.listen(PORT, (error) => {
+app.listen(PORT, (error) => {
   if (error) {
     console.log("Failed to listen on port " + PORT + ": " + error);
   } else {
