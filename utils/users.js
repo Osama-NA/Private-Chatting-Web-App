@@ -35,7 +35,7 @@ const getAdmins =()=> {
     pool.getConnection((error, connection) => {
         if (error) console.log("Failed to get pool connection . . ."+ error);
 
-        pool.query("SELECT * FROM admin", (error, results) => {
+        connection.query("SELECT * FROM admin", (error, results) => {
             connection.release();
             if (error) console.log("Failed to select admins: " + error);
 

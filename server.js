@@ -14,7 +14,6 @@ const PORT = process.env.PORT || 3000;
 const publicDirectory = path.join(__dirname, "./public");
 const chatBot = "Seguro Bot";
 
-app.set('trust proxy', true);
 app.use(express.static(publicDirectory));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
