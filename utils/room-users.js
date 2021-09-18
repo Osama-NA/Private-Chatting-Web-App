@@ -29,18 +29,13 @@ pool.getConnection((error, connection) => {
 function userJoin(id, name, room) {
   const user = { id, name, room };
 
-  pool.getConnection((error, connection) => {
-    if (error) console.log("Failed to get pool connection . . ." + error);
-
-    connection.query("INSERT INTO room_users SET ?", {
-      id: id,
-      username: name,
-      room: room,
-    }, (error) => {
-      connection.release();
-      if (error) console.log("Failed to insert user into room_users: " + error);
-    });
-  })
+  pool.query("INSERT INTO room_users SET ?", {
+    id: id,
+    username: name,
+    room: room,
+  }, (error) => {
+    if (error) console.log("Failed to insert user into room_users: " + error);
+  });
 
   users.push(user);
   return user;
@@ -91,27 +86,20 @@ function userLeave(id) {
     const index = users.findIndex((user) => user.id === id);
     room.setID(undefined); //To disable user from joining a chat room again before creating a new room
 
-    if (index !== -1) {
-      return users.splice(index, 1)[0];
-    }
+    if (index !== -1) return users.splice(index, 1)[0];
   });
 }
 
 //Every message sent is saved in messages table until users leave room
 function saveMessage(room, message) {
-  pool.getConnection((error, connection) => {
-    if (error) console.log("Failed to get pool connection . . ." + error);
-
-    connection.query("INSERT INTO messages SET ?", {
-      room_id: room,
-      username: message.username,
-      time: message.time,
-      message: message.message
-    }, (error) => {
-      connection.release();
-      if (error) console.log("Failed to insert into messages: " + error);
-    });
-  })
+  pool.query("INSERT INTO messages SET ?", {
+    room_id: room,
+    username: message.username,
+    time: message.time,
+    message: message.message
+  }, (error) => {
+    if (error) console.log("Failed to insert into messages: " + error);
+  });
 }
 
 //Gets all the temporary messages in messages table with current room_id then saves it in saved_messages table
