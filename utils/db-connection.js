@@ -1,10 +1,8 @@
 const dotenv = require('dotenv');
 const mysql = require('mysql');
 
-//Configuring dotenv to hide passwords and important variables
 dotenv.config({ path: '.env'});
 
-//Connecting to database
 const pool = mysql.createPool({
     connectionLimit: process.env.DATABASE_CONNECTION_LIMIT,
     host: process.env.DATABASE_HOST,
@@ -12,6 +10,5 @@ const pool = mysql.createPool({
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE
 });
-
 
 module.exports = pool;

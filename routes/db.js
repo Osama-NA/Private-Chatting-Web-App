@@ -1,8 +1,9 @@
-require("dotenv").config();
+require('dotenv').config();
 const express = require("express");
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
 const {
   checkAuthenticated,
@@ -13,17 +14,21 @@ const {
 
 const router = express.Router();
 
+if (router.get('env') === 'production') {
+  router.set('trust proxy', 1);
+  session.cookie.secure = true;
+}
+
 router.use(flash());
-router.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: false
-  })
-);
+router.use(session({
+  secret: process.env.SESSION_SECRET,
+  saveUninitialized: true,
+  resave: false
+}));
 router.use(passport.initialize());
 router.use(passport.session());
 router.use(methodOverride("_method"));
+router.use(cookieParser());
 
 //Contact form from guest user
 const guestContactUsController = require("../controllers/guest-contact-us");
