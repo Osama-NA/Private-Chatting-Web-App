@@ -1,4 +1,4 @@
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 const userInfo = require("../utils/user-info");
 const bcrypt = require("bcrypt");
 
@@ -13,31 +13,26 @@ exports.updateEmail = (req, res) => {
 
   if (email && currentEmail && password && from && page && hashedPassword) {
     if (validEmail(email)) {
-      db.query(
-        "SELECT * FROM " + from + " WHERE email = ?",
-        [email],
-        async (err, results) => {
-          if (err) {
+      pool.query(
+        "SELECT * FROM " + from + " WHERE email = ?", [email], async (error, results) => {
+          if (error) {
             return res.render(page, {
-              updateEmailMessage: "Failed to select users: " + err,
+              updateEmailMessage: "Failed to select users: " + error,
             });
           }
 
           if (results.length === 0) {
             try {
               if (await bcrypt.compare(password, hashedPassword)) {
-                db.query(
-                  "UPDATE "+from+" SET email = '" +
-                    email +
-                    "' WHERE email = ?",
-                  [currentEmail],
-                  (err, results) => {
-                    if (err) {
+                pool.query( "UPDATE "+from+" SET email = '" + email + "' WHERE email = ?",
+                  [currentEmail], (error) => {
+                    if (error) {
                       return res.render(page, {
                         updateEmailMessage:
                           "Failed to update user's email: " + err,
                       });
                     }
+                    
                     userInfo.setItem("email", email);
                     return res.render(page, {
                       updateEmailMessage: "Email successfully updated",

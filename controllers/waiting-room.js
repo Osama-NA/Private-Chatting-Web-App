@@ -1,5 +1,5 @@
 const room = require("../utils/room");
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 const userInfo = require("../utils/user-info");
 
 //Generates a url with room id for second user if room id and username are set
@@ -10,8 +10,10 @@ exports.waitingRoom = (req, res) => {
   if (id && username) {
 
     //Checks if second user joined, if yes then redirects first user(room creator) to chat room
-    db.query( "SELECT * FROM chat_rooms WHERE room_id= ?", [id], (err, results) => {
-        if (results.length > 0)
+    pool.query( "SELECT * FROM chat_rooms WHERE room_id= ?", [id], (error, results) => {
+      if(error) console.log("Failed to select from chat_rooms: "+ error);
+
+      if (results.length > 0)
           return res.redirect("/chat-room?id=" + id + "&username=" + username);
       }
     );

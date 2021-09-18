@@ -1,4 +1,4 @@
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 const userInfo = require("../utils/user-info");
 const bcrypt = require("bcrypt");
 
@@ -14,14 +14,13 @@ exports.updateUsername = async (req, res) => {
   if (email && username && password && from && page && hashedPassword) {
     try {
       if (await bcrypt.compare(password, hashedPassword)) {
-        db.query(
+        pool.query(
           "UPDATE "+from+" SET username = '" + username + "' WHERE email = ?",
-          [email],
-          (err, results) => {
-            if (err) {
+          [email], (error) => {
+            if (error) {
               return res.render(page, {
                 updateUsernameMessage:
-                "Failed to update user's username: " + err,
+                "Failed to update user's username: " + error,
               });
             }
             userInfo.setItem("username", username);

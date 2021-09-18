@@ -1,4 +1,4 @@
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 const userInfo = require("../utils/user-info.js");
 const fs = require("fs");
 
@@ -15,7 +15,9 @@ exports.downloadChat = (req, res) => {
     //as the content and room id as the file name then download the file to the Client
     //then delete it from the server
     const query = `SELECT username, time, message FROM saved_messages WHERE room_id = '${id}' AND user_email = '${email}'`;
-    db.query(query, (err, result) => {
+    pool.query(query, (error, result) => {
+      if(error) console.log("Failed to select username, time, message from saved_messages: " + error);
+
       Object.keys(result).forEach((key) => {
         const username = result[key]["username"];
         const time = result[key]["time"];

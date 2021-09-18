@@ -1,4 +1,4 @@
-const db = require("./db-connection");
+const pool = require("./db-connection");
 
 const users = [];
 
@@ -9,41 +9,39 @@ function storeUsers(){
 }
 
 const getUsers =()=> {
-    db.query("SELECT * FROM users", (error, results) => {
-        if(error){
-            console.log("Failed to select users: "+ error);
-        }
+    pool.query("SELECT * FROM users", (error, results) => {
+        if (error) console.log("Failed to select users: " + error);
+
         Object.keys(results).forEach((key) => {
-            let {id, email, username, password} = results[key];
+            let { id, email, username, password } = results[key];
             let user = {
                 id: id,
                 email: email,
                 username: username,
                 password: password,
             };
-            user.role= "basic" //Setting user role
+            user.role = "basic" //Setting user role
             users.push(user);
         });
     })
 }
 
 const getAdmins =()=> {
-    db.query("SELECT * FROM admin", (error, results) => {
-        if(error){
-            console.log("Failed to select admins: "+ error);
-        }
+    pool.query("SELECT * FROM admin", (error, results) => {
+        if (error) console.log("Failed to select admins: " + error);
+
         Object.keys(results).forEach((key) => {
-            let {id, email, username, password} = results[key];
+            let { id, email, username, password } = results[key];
             let admin = {
                 id: id,
                 email: email,
                 username: username,
                 password: password,
             };
-            admin.role= "admin" //Setting user role
+            admin.role = "admin" //Setting user role
             users.push(admin);
         });
-    })
+    });
 }
 
 module.exports = {

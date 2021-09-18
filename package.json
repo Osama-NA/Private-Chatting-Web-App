@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
+  "Procfile":{
+    "web": "node server.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

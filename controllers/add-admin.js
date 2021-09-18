@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 
 exports.addAdmin = async (req, res) => {
   const email = req.body["email"];
@@ -13,29 +13,26 @@ exports.addAdmin = async (req, res) => {
         try {
           const hashedPassword = await bcrypt.hash(password, 10);
 
-          db.query(
-            "SELECT * FROM admin WHERE email = ?",
-            [email],
-            (err, results) => {
-              if (err) {
+          pool.query("SELECT * FROM admin WHERE email = ?", [email], (error, results) => {
+              if (error) {
                 return res.render("add-admin", {
-                  addAdminMessage: "Failed to select users emails: " + err,
+                  addAdminMessage: "Failed to select users emails: " + error,
                 });
               }
+
               if (results.length === 0) {
-                db.query(
-                  "INSERT INTO admin SET ?",
+                pool.query( "INSERT INTO admin SET ?",
                   {
                     email: email,
                     username: username,
                     password: hashedPassword,
-                  },
-                  (err, results) => {
-                    if (err) {
+                  }, (error) => {
+                    if (error) {
                       return res.render("add-admin", {
-                        addAdminMessage: "Failed to add admin: " + err,
+                        addAdminMessage: "Failed to add admin: " + error,
                       });
                     }
+                    
                     return res.render("add-admin", {
                       addAdminMessage: "New admin added successfully",
                     });

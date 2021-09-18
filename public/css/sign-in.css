@@ -42,9 +42,6 @@ body {
   display: block;
   margin-top: 1.8rem;
   margin-right: 5rem;
-  animation-name: nav-animation;
-  animation-duration: 0.5s;
-  animation-timing-function: ease;
 }
 
 .header .nav a {
@@ -211,15 +208,6 @@ footer i {
 }
 
 /* Animations */
-
-@keyframes nav-animation {
-  0% {
-    transform: translate(-200px);
-  }
-  100% {
-    transform: translate(0px);
-  }
-}
 
 @keyframes minion{
   0%{

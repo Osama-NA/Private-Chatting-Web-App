@@ -1,14 +1,13 @@
-const db = require("./db-connection.js");
+const pool = require("./db-connection.js");
 const room = require("./room.js");
 const userInfo = require("./user-info");
 const users = [];
 
 //Loads roam users when user joins room
-db.query("SELECT * FROM room_users", (error, results) => {
-  if (error) {
-    console.log("Failed to select room users: " + error);
-  }
-  if(results){
+pool.query("SELECT * FROM room_users", (error, results) => {
+  if (error) console.log("Failed to select room users: " + error);
+
+  if (results) {
     Object.keys(results).forEach((key) => {
       let { id, username, room } = results[key];
       let user = {
@@ -25,10 +24,12 @@ db.query("SELECT * FROM room_users", (error, results) => {
 function userJoin(id, name, room) {
   const user = { id, name, room };
 
-  db.query("INSERT INTO room_users SET ?", {
+  pool.query("INSERT INTO room_users SET ?", {
     id: id,
     username: name,
     room: room,
+  }, (error) => {
+    if (error) console.log("Failed to insert user into room_users: " + error);
   });
 
   users.push(user);
@@ -37,32 +38,42 @@ function userJoin(id, name, room) {
 
 //Get Current User
 function getCurrentUser(id) {
-   return users.find((user) => user.id === id);
+  return users.find((user) => user.id === id);
 }
 
 //User Leaves Chat
 function userLeave(id) {
   //Remove User From room_users Table
-  db.query("DELETE FROM room_users WHERE id = ?", [id]);
+  pool.query("DELETE FROM room_users WHERE id = ?", [id], (error) => {
+    if (error) console.log("Failed to delete from room_users: " + error);
+  });
 
   //Remove Room From chat_rooms Table If Both Users Left The Room, and delete messages from messages table
   const user = users.find((user) => user.id === id);
-  if(user){
-    db.query("SELECT no_of_access FROM chat_rooms WHERE room_id = ?", [user.room],
-        (error, results) => {
-          if(results){
-            if (results[0]["no_of_access"] === 2) {
-              db.query("UPDATE chat_rooms SET no_of_access = 1 WHERE room_id= ?", [user.room]);
-            } else if (results[0]["no_of_access"] === 1) {
-              db.query("DELETE FROM chat_rooms WHERE room_id = ?", [user.room]);
-              db.query("DELETE FROM messages WHERE room_id = ?", [user.room]);
-              room.deleteRoom(); //Unset all values of roomInfo in /utils/room
-            }
+  if (user) {
+    pool.query("SELECT no_of_access FROM chat_rooms WHERE room_id = ?", [user.room],
+      (error, results) => {
+        if(error) console.log("Failed to select no of accesses from chat_rooms: " + error);
+
+        if (results) {
+          if (results[0]["no_of_access"] === 2) {
+            pool.query("UPDATE chat_rooms SET no_of_access = 1 WHERE room_id= ?", [user.room], (error) =>{
+              if(error) console.log("Failed to update chat_rooms no_of_access: " + error);
+            });
+          } else if (results[0]["no_of_access"] === 1) {
+            pool.query("DELETE FROM chat_rooms WHERE room_id = ?", [user.room], (error) => {
+              if (error) console.log("Failed to delete from chat_rooms: " + error);
+            });
+            pool.query("DELETE FROM messages WHERE room_id = ?", [user.room], (error) => {
+              if (error) console.log("Failed to delete from messages: " + error);
+            });
+            room.deleteRoom(); //Unset all values of roomInfo in /utils/room
           }
         }
-    ); 
+      }
+    );
   }
-  
+
 
   const index = users.findIndex((user) => user.id === id);
   room.setID(undefined); //To disable user from joining a chat room again before creating a new room
@@ -73,18 +84,20 @@ function userLeave(id) {
 }
 
 //Every message sent is saved in messages table until users leave room
-function saveMessage(room, message){
-  db.query("INSERT INTO messages SET ?", {
+function saveMessage(room, message) {
+  pool.query("INSERT INTO messages SET ?", {
     room_id: room,
     username: message.username,
     time: message.time,
     message: message.message
+  }, (error) => {
+    if(error) console.log("Failed to insert into messages: " + error);
   });
 }
 
 //Gets all the temporary messages in messages table with current room_id then saves it in saved_messages table
-function saveChat(id){
-  if (userInfo.getItem("email")){
+function saveChat(id) {
+  if (userInfo.getItem("email")) {
     const user = getCurrentUser(id);
     const room = user.room;
     const email = userInfo.getItem("email");
@@ -92,21 +105,27 @@ function saveChat(id){
     const date = ("0" + dateObj.getDate()).slice(-2);
     const month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
     const year = dateObj.getFullYear();
-    
-    //Delete previously saved messages, to not duplicate same messages
-    db.query(`DELETE FROM saved_messages WHERE room_id = '${room}' AND user_email = '${email}'`);
 
-    db.query("SELECT * FROM messages WHERE room_id = ?", [room], (error, results) => {
-      if(results.length > 0){
+    //Delete previously saved messages, to not duplicate same messages
+    pool.query(`DELETE FROM saved_messages WHERE room_id = '${room}' AND user_email = '${email}'`, (error) => {
+      if(error) console.log("Failed to delete from saved_messages: " + error);
+    });
+
+    pool.query("SELECT * FROM messages WHERE room_id = ?", [room], (error, results) => {
+      if(error) console.log("Failed to select from messages: " + error);
+
+      if (results.length > 0) {
         Object.keys(results).forEach((key) => {
           let { room_id, username, time, message } = results[key];
-          db.query("INSERT INTO saved_messages SET ?", {
+          pool.query("INSERT INTO saved_messages SET ?", {
             user_email: email,
             room_id: room_id,
             username: username,
             time: time,
             message: message,
             date: year + "-" + month + "-" + date
+          }, (error) => {
+            if(error) console.log("Failed to insert into saved_messages: " + error);
           });
         });
       }

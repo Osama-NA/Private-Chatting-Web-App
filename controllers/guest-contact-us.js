@@ -1,27 +1,24 @@
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 
 exports.guestContactUs = (req, res) => {
   const { email, subject, description } = req.body;
 
   if (email && subject && description) {
-    db.query(
-      "SELECT * FROM contact_forms WHERE subject = '" +
-        subject +
-        "' AND description = '" +
-        description +
+    pool.query("SELECT * FROM contact_forms WHERE subject = '" +
+        subject + "' AND description = '" + description +
         "' AND submitted_by = '" + email +"'",
-      (err, results) => {
-        if (err) {
+      (error, results) => {
+        if (error) {
           return res.render("index", {
             guestContactUsMessage:
-              "Failed to select contact forms names: " + err,
+              "Failed to select contact forms names: " + error,
           });
         }
+
         if (results.length === 0) {
-          db.query(
-            "INSERT INTO contact_forms SET ?",
+          pool.query("INSERT INTO contact_forms SET ?",
             { submitted_by: email, subject: subject, description: description },
-            (error, result) => {
+            (error) => {
               if (error) {
                 return res.render("index", {
                   guestContactUsMessage:

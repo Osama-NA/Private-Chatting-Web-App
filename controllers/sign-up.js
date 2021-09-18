@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt"); //Library to hash password
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 const { storeUsers, users } = require("../utils/users");
 
 exports.signUp = async (req, res) => {
@@ -14,31 +14,27 @@ exports.signUp = async (req, res) => {
         try {
           const hashedPassword = await bcrypt.hash(password, 10);
 
-          db.query(
-            "SELECT * FROM users WHERE email = ?",
-            [email],
-            (err, results) => {
-              if (err) {
+          pool.query( "SELECT * FROM users WHERE email = ?", [email],
+            (error, results) => {
+              if (error) {
                 return res.render("sign-up", {
-                  signUpMessage: "Failed to select users emails: " + err,
+                  signUpMessage: "Failed to select users emails: " + error,
                 });
               }
               if (results.length === 0) {
-                db.query(
-                  "INSERT INTO users SET ?",
+                pool.query( "INSERT INTO users SET ?",
                   {
                     email: email,
                     username: username,
                     password: hashedPassword,
-                  },
-                  (err, results) => {
-                    if (err) {
+                  }, (error) => {
+                    if (error) {
                       return res.render("sign-up", {
-                        signUpMessage: "Failed to register user: " + err,
+                        signUpMessage: "Failed to register user: " + error,
                       });
                     }
                     storeUsers(); //Calling storeUsers function in /utils/users to add the newly registered user to stored users
-                    res.redirect("/sign-in");
+                    res.render("sign-in", {email: email, password: password});
                   }
                 );
               } else {

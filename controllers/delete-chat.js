@@ -1,4 +1,4 @@
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 const userInfo = require("../utils/user-info.js");
 
 exports.deleteChat = (req, res) => {
@@ -7,7 +7,9 @@ exports.deleteChat = (req, res) => {
   const role = userInfo.getItem("role");
 
   if (id && email && role) {
-    db.query(`DELETE FROM saved_messages WHERE room_id = '${id}' AND user_email = '${email}'`);
+    pool.query(`DELETE FROM saved_messages WHERE room_id = '${id}' AND user_email = '${email}'`, (error) => {
+      if(error) console.log("Failed to delete from saved_messages: "+ error);
+    });
     return redirect(role, res);
   }
 };

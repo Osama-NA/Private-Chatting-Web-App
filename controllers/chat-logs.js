@@ -1,4 +1,4 @@
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 const userInfo = require("../utils/user-info.js");
 
 exports.chatLogs = (req, res) => {
@@ -6,12 +6,13 @@ exports.chatLogs = (req, res) => {
   const role = userInfo.getItem("role");
 
   //DISTINCT used to not select duplicate rows with same room_id and date
-  db.query(
-    "SELECT DISTINCT room_id, date FROM saved_messages WHERE user_email = ?",
-    [email],
-    (err, rows) => {
+  pool.query("SELECT DISTINCT room_id, date FROM saved_messages WHERE user_email = ?", [email],
+    (error, rows) => {
+      if(error) console.log("Failed to select distinct room_id, data from saved_messages: " + error);
+
       if (rows.length > 0) {
         let chatLogs = "";
+
         Object.keys(rows).forEach((key) => {
           const room_id = rows[key]["room_id"];
           const date = rows[key]["date"];
@@ -25,16 +26,17 @@ exports.chatLogs = (req, res) => {
           <i class="fas fa-trash-alt"></i></div></td>|</tr>`;
           chatLogs += chatLog;
         });
+
         return redirect(chatLogs, role, res);
       }else {
-        return redirect("", role, res);
+        return redirect(undefined, role, res);
       }
     }
   );
 };
 
 function redirect(chatLogs, role, res) {
-  if (chatLogs.length > 0) {
+  if (chatLogs) {
     if (role === "admin") {
       return res.render("admin-chat-logs", { chatLogs: chatLogs });
     } else if (role === "basic") {

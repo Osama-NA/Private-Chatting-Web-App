@@ -1,7 +1,9 @@
-const db = require("../utils/db-connection.js");
+const pool = require("../utils/db-connection.js");
 
 exports.reportedBugs = (req, res) => {
-  db.query("SELECT * FROM bug_reports", (err, rows) => {
+  pool.query("SELECT * FROM bug_reports", (error, rows) => {
+    if(error) console.log("Failed to select from bug_reports: " + error);
+
     if (rows.length > 0) {
       let reports = "";
 
@@ -16,15 +18,11 @@ exports.reportedBugs = (req, res) => {
           `</div></td><td><div>` + solved + `</div></td>`;
 
         if (solved === "No") {
-          report +=
-            `<td class= 'col1'><img src='images/solved.png' alt='delete'><form action='/db/bug-solved' method='post'><input type='submit' class= 'solve' name='bug-id' value= '` +
-            id +
-            `' /></form></td>|</tr>`;
+          report += `<td class= 'col1'><img src='images/solved.png' alt='delete'><form action='/db/bug-solved' 
+          method='post'><input type='submit' class= 'solve' name='bug-id' value= '` + id + `' /></form></td>|</tr>`;
         } else {
-          report +=
-            `<td class= 'col2'><img src='images/delete.png' alt='delete'><form action='/db/bug-not-solved' method='post'><input type='submit' class= 'solve' name='bug-id' value= '` +
-            id +
-            `' /></form></td>|</tr>`;
+          report += `<td class= 'col2'><img src='images/delete.png' alt='delete'><form action='/db/bug-not-solved' 
+          method='post'><input type='submit' class= 'solve' name='bug-id' value= '` + id + `' /></form></td>|</tr>`;
         }
 
         reports += report;
