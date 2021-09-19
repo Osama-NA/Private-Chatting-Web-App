@@ -27,7 +27,7 @@ if (router.get('env') === 'production') {
   router.set('trust proxy', 1);
   session.cookie.secure = true;
 }
-
+console.log(process.env.SESSION_SECRET);
 router.use(session({
   store: sessionStore,
   secret: process.env.SESSION_SECRET,
