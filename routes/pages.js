@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const session = require("express-session");
+const MySQLStore = require('express-mysql-session')(session);
 const flash = require("express-flash");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
@@ -14,18 +15,28 @@ const {
 } = require("../utils/auth-checker");
 
 const router = express.Router();
+const dbValues = {
+  connectionLimit: process.env.DATABASE_CONNECTION_LIMIT,
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE
+};
+const sessionStore = new MySQLStore(dbValues);
 
 if (router.get('env') === 'production') {
   router.set('trust proxy', 1);
   session.cookie.secure = true;
 }
 
-router.use(flash());
 router.use(session({
+  store: sessionStore,
   secret: process.env.SESSION_SECRET,
   saveUninitialized: true,
   resave: false
 }));
+
+router.use(flash());
 router.use(passport.initialize());
 router.use(passport.session());
 router.use(methodOverride("_method"));

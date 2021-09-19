@@ -3,6 +3,7 @@ const express = require("express");
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
+const MySQLStore = require('express-mysql-session')(session);
 const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
 const {
@@ -13,18 +14,28 @@ const {
 } = require("../utils/auth-checker");
 
 const router = express.Router();
+const dbValues = {
+  connectionLimit: process.env.DATABASE_CONNECTION_LIMIT,
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE
+};
+const sessionStore = new MySQLStore(dbValues);
 
 if (router.get('env') === 'production') {
   router.set('trust proxy', 1);
   session.cookie.secure = true;
 }
 
-router.use(flash());
 router.use(session({
+  store: sessionStore,
   secret: process.env.SESSION_SECRET,
   saveUninitialized: true,
   resave: false
 }));
+
+router.use(flash());
 router.use(passport.initialize());
 router.use(passport.session());
 router.use(methodOverride("_method"));
