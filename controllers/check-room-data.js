@@ -47,7 +47,11 @@ function createOrUpdateRoom(roomID, roomAccess, res) {
         if (error) console.log("Failed to select access_two, access_one from chat_rooms: " + error);
 
         if (results.length > 0) {
-          return res.redirect("/room-expired");
+          try{
+            return res.redirect("/room-expired");
+          }catch(e){
+            console.log("Routing " + e);
+          }
         }
         if (room.getRoom()["id"] != undefined) {
           connection.query("INSERT INTO chat_rooms SET ?", { room_id: roomID, access_one: 0, access_two: 1, no_of_access: 1 }, (error) => {

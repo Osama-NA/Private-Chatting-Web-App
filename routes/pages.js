@@ -4,7 +4,6 @@ const session = require("express-session");
 const MySQLStore = require('express-mysql-session')(session);
 const flash = require("express-flash");
 const passport = require("passport");
-const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
 const userInfo = require("../utils/user-info");
 const {
@@ -22,6 +21,7 @@ const dbValues = {
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE
 };
+//Store To Manage Sessions and avoid memory leak in production
 const sessionStore = new MySQLStore(dbValues);
 
 if (router.get('env') === 'production') {
@@ -40,7 +40,6 @@ router.use(flash());
 router.use(passport.initialize());
 router.use(passport.session());
 router.use(methodOverride("_method"));
-router.use(cookieParser());
 
 router.get("/", checkNotAuthenticated, (req, res) => {
   res.render("index");
