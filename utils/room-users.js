@@ -29,13 +29,17 @@ pool.getConnection((error, connection) => {
 function userJoin(id, name, room) {
   const user = { id, name, room };
 
-  pool.query("INSERT INTO room_users SET ?", {
-    id: id,
-    username: name,
-    room: room,
-  }, (error) => {
-    if (error) console.log("Failed to insert user into room_users: " + error);
-  });
+  pool.getConnection((error, connection) => {
+    if (error) console.log("Failed to get pool connection . . ." + error);
+
+    connection.query("INSERT INTO room_users SET ?", {
+      id: id,
+      username: name,
+      room: room,
+    }, (error) => {
+      if (error) console.log("Failed to insert user into room_users: " + error);
+    });
+  })
 
   users.push(user);
   return user;

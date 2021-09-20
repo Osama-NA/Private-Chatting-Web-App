@@ -38,10 +38,12 @@ clear.addEventListener("click", () => {
 })
 
 //Save Chat
-save.addEventListener("click", () => {
-  socket.emit("save-chat");
-  window.alert("Chat has been saved");
-})
+if(save){
+  save.addEventListener("click", () => {
+    socket.emit("save-chat");
+    window.alert("Chat has been saved");
+  })
+}
 
 //Output Message To DOM
 function outputMessage(message) {
