@@ -139,7 +139,6 @@ function saveChat(id) {
               message: message,
               date: year + "-" + month + "-" + date
             }, (error) => {
-              connection.release();
               if (error) console.log("Failed to insert into saved_messages: " + error);
             });
           });

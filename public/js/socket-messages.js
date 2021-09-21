@@ -24,7 +24,7 @@ chatForm.addEventListener("submit", (Event) => {
   const message = Event.target.elements.message.value;
 
   //Emit Message To Server
-  socket.emit("chat-message", message);
+  if(message) socket.emit("chat-message", message);
 
   //Clear and focus input field
   Event.target.elements.message.value= '';
