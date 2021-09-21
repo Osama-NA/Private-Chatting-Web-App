@@ -134,7 +134,9 @@ router.get("/chat-room-sign-in", chatRoomSignInController.chatRoomSignIn);
 
 //Check if required data is available then redirect to chat room
 const checkRoomDataController = require("../controllers/check-room-data");
-router.get("/chat-room", checkRoomDataController.checkRoomData, (req, res) => {
+//Used to check if a user is joining expired room (already accessed by two)
+const checkJoiningExpiredRoomController = require("../controllers/check-joining-expired-room");
+router.get("/chat-room", checkRoomDataController.checkRoomData, checkJoiningExpiredRoomController.joiningExpiredRoom, (req, res) => {
   if (req.isAuthenticated()) {
     res.render("signed-chat-room");
   } else {

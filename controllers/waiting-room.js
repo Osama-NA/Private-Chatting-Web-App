@@ -24,7 +24,7 @@ exports.waitingRoom = (req, res) => {
 
     //Checks if 'User two joined' is set in localStorage, if yes then redirects first user(Room creator) to the chat room
     if(localStorage.getItem("User two joined") === 'true'){
-      localStorage.setItem("User two joined", false);
+      localStorage.removeItem("User two joined", false);
       return res.redirect(`/chat-room?id=${id}&username=${username}`);
     }
     
