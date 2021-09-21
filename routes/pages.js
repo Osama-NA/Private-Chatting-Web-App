@@ -12,6 +12,7 @@ const {
   checkAuthenticatedBasicOrAdmin,
   checkNotAuthenticated,
 } = require("../utils/auth-checker");
+const room = require("../utils/room.js");
 
 const router = express.Router();
 const dbValues = {
@@ -42,6 +43,7 @@ router.use(passport.session());
 router.use(methodOverride("_method"));
 
 router.get("/", checkNotAuthenticated, (req, res) => {
+  room.deleteRoom(); //to make sure room object values are reset before creating new room in home page
   res.render("index");
 });
 
@@ -54,10 +56,12 @@ router.get("/sign-up", checkNotAuthenticated, (req, res) => {
 });
 
 router.get("/signed-index", checkAuthenticated, (req, res) => {
+  room.deleteRoom(); //to make sure room object values are reset before creating new room in home page
   res.render("signed-index");
 });
 
 router.get("/admin-index", checkAuthenticatedAdmin, (req, res) => {
+  room.deleteRoom(); //to make sure room object values are reset before creating new room in home page
   res.render("admin-index");
 });
 
