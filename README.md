@@ -65,6 +65,19 @@
 ![sign_in](https://user-images.githubusercontent.com/78507737/135309063-0ee1a8be-4dd3-4963-bba0-0478b10fcaf8.PNG)
 
 
+## Download your chat logs
+
+- Click the download icon of the chat log row you want to save
+
+![_logs](https://user-images.githubusercontent.com/78507737/135313667-2777663d-38ce-447d-9b54-df1a20ac1a27.PNG)
+
+
+
+- Downloaded file:
+ 
+![chat_file](https://user-images.githubusercontent.com/78507737/135314457-6d190b77-8dab-4949-90a8-69b7ac9c8920.PNG)
+
+
 
 ## Admins
 
