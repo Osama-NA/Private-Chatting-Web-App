@@ -17,8 +17,8 @@ body{
     height: auto;
     width: auto;
     background-color: rgb(255, 255, 255);
-    border: 3px solid #383838;
-    border-radius: 20px;
+    border: 2px solid #383838;
+    border-radius: 10px;
     padding: 1rem 3rem;
     margin: 1rem;
 }
@@ -51,45 +51,45 @@ p{
     width:165px;
     color: #ffffff;
     background-color: #474747;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 5px 5px 0;
     border-left: none;
     cursor: pointer;
 }
 #url{
-    border-radius: 10px 0 0 10px;
+    border-radius: 5px 0 0 5px;
     border-right: none;
 }
 #url, #copy-link button{
     font-size: 18px;
-    border: 2px solid #383838;
-    padding: 1rem;
+    border: 1px solid #383838;
+    padding: .6rem;
     outline: none;
 }
 
 @media (max-width: 767px){
     .container main{
-        padding: 1rem 2rem;
+        padding: 0 1rem;
     }
 
     h1{
-        font-size: 26px;
-        margin-bottom: 3rem;
+        font-size: 22px;
+        margin-bottom: 1rem;
     }
     a{
         font-size: 14px;
-        padding: 1.5rem 0 1rem;
+        padding: 1rem 0;
     }
     p{
-        font-size: 18px;
+        font-size: 16px;
     }
     #copy-link button, #url{
-        padding: 0.5rem;
+        padding: 0.4rem .5rem;
         font-size: 14px;
     }
     #copy-link{
         margin-bottom: 0.5rem;
     }
     #copy-link button{
-        width:125px;
+        width:120px;
     }
 }

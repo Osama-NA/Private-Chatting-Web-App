@@ -17,9 +17,9 @@ form{
     height: auto;
     width: auto;
     background-color: rgb(255, 255, 255);
-    border: 3px solid #383838;
-    border-radius: 20px;
-    padding: 2rem 2.5rem;
+    border: 2px solid #383838;
+    border-radius: 10px;
+    padding: 1rem 3rem;5
     margin: 1rem;
 }
 
@@ -29,10 +29,10 @@ label{
     font-weight: bold;
     padding-bottom: 1rem;
 }
-input{
-    border: 2px solid #383838;
+input,button{
+    border: 1px solid #383838;
     font-size: 18px;
-    padding: 1rem;
+    padding: .6rem;
     margin: 1rem 0;
     outline: none;
 }
@@ -42,15 +42,15 @@ input{
 }
 #name{
     width: 70%;
-    border-radius: 10px 0 0 10px;
+    border-radius: 5px 0 0 5px;
     border-right: none;
 }
 
 #submit{
-    width: 100px;
+    width: 70px;
     color: #fff;
     background-color: #383838;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 5px 5px 0;
     border-left: none;
     cursor: pointer;
 }
@@ -64,18 +64,18 @@ a{
 
 @media (max-width: 767px){
     form{
-        padding: 1.5rem 2rem;
+        padding: .6rem 1rem;
     }
     label{
-        font-size: 24px;
+        font-size: 22px;
         padding-bottom: 0.5rem;
     }
     a{
         font-size: 14px;
         padding: 0.5rem 0 0;
     }
-    input{
-        font-size: 16px;
-        padding: 0.5rem;
+    input, button{
+        font-size: 14px;
+        padding: 0.4rem 0.5rem;
     }
 }
