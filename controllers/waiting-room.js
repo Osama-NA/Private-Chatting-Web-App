@@ -10,8 +10,8 @@ const localStorage = require("localStorage");
 //Generates a url with room id for second user if room id and username are set
 exports.waitingRoom = (req, res) => {
   const id = room.getRoom()["id"];
-  const username = room.getRoom()["username"];
-
+  const username = room.getRoom()["usernameOne"];
+  
   if (id && username) {
 
     //Checks if second user joined, if yes then sets a 'User two joined' in localStorage

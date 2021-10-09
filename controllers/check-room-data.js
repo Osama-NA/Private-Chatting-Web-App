@@ -11,13 +11,14 @@ const localStorage = require("localStorage");
 exports.checkRoomData = (req, res, next) => {
   const roomData = room.getRoom();
   const roomID = roomData["id"];
-  const roomUsername = roomData["username"];
   const roomAccess =
     roomData["access-two"] === "true"
       ? "user two"
       : roomData["access-one"] === "true"
         ? "user one"
         : undefined;
+
+  const roomUsername = roomAccess === "user two" ? roomData["usernameTwo"] : roomAccess === "user one" ? roomData["usernameOne"] : undefined;
 
   if (roomID && roomAccess && roomUsername) {
     createOrUpdateRoom(roomID, roomAccess, res);

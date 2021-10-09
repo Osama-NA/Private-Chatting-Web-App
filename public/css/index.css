@@ -147,7 +147,9 @@ main #create-room {
 
 #about .about-text {
   width: 45%;
-  padding: 1.5rem 3rem;
+  color: rgb(56, 56, 56);
+  height: auto;
+  padding: 1rem 2rem;
   font-size: 18px;
   box-shadow: 0px 2px 4px 0.5px rgba(0, 0, 0, 0.204);
   background-color: #dfe2fe54;

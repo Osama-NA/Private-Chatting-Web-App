@@ -46,7 +46,7 @@ exports.signIn = (req, res, next) => {
 
         //Check if a user is signing in to basic/admin home page or signed in chat room
         if(signedInRoom === "true" && id && username){
-          room.setUsername(user.username);
+          room.setUsernameTwo(user.username);
           req.session.save(function () {
             return res.redirect("/chat-room?id=" + id + "&username=" + username);
           }); 

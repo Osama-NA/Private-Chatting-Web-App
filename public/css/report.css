@@ -17,7 +17,7 @@
     background-color: #e6e8ff;
     width: 35vw;
     height: auto;
-    border-radius: 30px;
+    border-radius: 15px;
     padding: 1rem 2rem;
     max-width: 550px;
     max-height: 80vh;
@@ -61,14 +61,20 @@
     text-transform: uppercase;
     cursor: pointer;
     margin-top: 1rem;
-    font-weight: bold;
     color: rgb(255, 255, 255);
     background-color: #7874f2;
     transition: all 0.5s ease;
 } 
-
-.report-form #report:hover, .report-form #close:hover{
+.report-form #close{
+    background-color: #f27474; 
+    border: 1px solid #f27474;
+}
+.report-form #report:hover{
   background-color: #5c57f1f3;
+}
+.report-form #close:hover{
+  background-color: #f04949;
+  border: 1px solid #f04949;
 }
 
 /* MEDIA */
@@ -83,20 +89,27 @@
 @media (max-width: 767px) {
     .report-form-content{
         width: 90vw;
+        padding: 1rem 1.3rem;
     }
     .report-form h3{
         font-size: 22px !important;
+        padding-bottom: 0;
+        margin: 0 0 2rem;
       }
     .report-form label{
         font-size: 16px;
+        padding-bottom: .5rem;
     }
     .report-form input, .report-form textarea{
+        padding: .6rem;
         font-size: 14px;
     }
     .report-form #report, .report-form #close{
         font-size: 14px;
-        width: 95px;
-        padding: 0.5rem;
+        width: 85px;
+        padding: 0.4rem;
+        margin: 0.4rem;
     }
+    
 }
   

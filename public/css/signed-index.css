@@ -162,9 +162,9 @@ body {
 .content p {
   z-index: 1;
   text-align: center;
-  width: 80%;
-  font-size: 22px;
-  font-weight: bold;
+  width: 60%;
+  font-size: 20px;
+  color: rgb(56, 56, 56);
 }
 
 .content #room-description{
