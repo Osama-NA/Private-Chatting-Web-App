@@ -20,10 +20,9 @@ body {
 .container {
   position: relative;
   width: 55%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: rgb(255, 255, 255);
   margin: 0 auto;
-  overflow: hidden;
   display: flex;
   flex-direction: row;
 }
@@ -139,10 +138,9 @@ body {
 .content {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .content h4 {
   margin: 0 0 2rem;
@@ -245,6 +243,10 @@ form #send {
 
 /* Small Screens Media*/
 @media (max-width: 767px) {
+  .container{
+    width: 100vw;
+    height: 100%;
+  }
   .nav {
     min-width: 55px;
     max-width: 55px;
