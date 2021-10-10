@@ -22,8 +22,8 @@ app.use(express.json());
 app.set("view engine", "hbs");
 
 //Setting routes
-app.use("/", pagesRoutes);
-app.use("/db", databaseRoutes);
+app.use("/", pagesRoutes); // GET requests
+app.use("/db", databaseRoutes); // POST requests
 
 //When a user connects to chat room
 io.on("connection", (socket) => {

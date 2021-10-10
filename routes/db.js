@@ -56,6 +56,11 @@ router.post("/sign-up", checkNotAuthenticated, signUpController.signUp);
 const signInController = require("../controllers/sign-in");
 router.post("/sign-in", checkNotAuthenticated, signInController.signIn);
 
+
+//Save Name For Chat Room
+const saveNameController = require("../controllers/save-name");
+router.post("/save-name", saveNameController.saveName);
+
 //Contact form from guest user
 const contactUsController = require("../controllers/contact-us");
 router.post("/contact-us", checkAuthenticated, contactUsController.contactUs);

@@ -42,7 +42,8 @@ router.use(passport.initialize());
 router.use(passport.session());
 router.use(methodOverride("_method"));
 
-router.get("/", checkNotAuthenticated, (req, res) => {
+const incrementVisitorsCountController = require("../controllers/increment-visitors-count");
+router.get("/", incrementVisitorsCountController.incrementVisitorsCount, checkNotAuthenticated, (req, res) => {
   room.deleteRoom(); //to make sure room object values are reset before creating new room in home page
   res.render("index");
 });
@@ -115,7 +116,9 @@ router.get("/chat-logs", checkAuthenticated, chatLogsController.chatLogs);
 
 //Creates Room id then redirects to get-name page or waiting-room page
 const createRoomController = require("../controllers/create-room");
-router.get("/create-room", createRoomController.createRoom);
+// Increments created rooms count in database
+const roomsCreatedCountController = require("../controllers/rooms-created-count");
+router.get("/create-room", roomsCreatedCountController.roomsCreatedCount, createRoomController.createRoom);
 
 //When redirected to get-name page, checkSecondAccessController checks if it's the second user i.e the user who joined through link and sets the room id and access for second user 
 const checkSecondAccessController = require("../controllers/check-second-access");
@@ -127,10 +130,6 @@ router.get("/url-get-name", checkSecondAccessController.checkSecondAccess, (req,
 router.get("/get-name", (req, res) => {
   res.render("get-name");
 });
-
-//Save Name For Chat Room
-const saveNameController = require("../controllers/save-name");
-router.post("/save-name", saveNameController.saveName);
 
 //Sign in then join chat room
 const chatRoomSignInController = require("../controllers/chat-room-sign-in");
