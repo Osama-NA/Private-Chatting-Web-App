@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt"); //Library to hash password
 const pool = require("../utils/db-connection.js");
-const { storeUsers, users } = require("../utils/users");
+const { storeUsers } = require("../utils/users");
 
 exports.signUp = async (req, res) => {
   const email = req.body.email;

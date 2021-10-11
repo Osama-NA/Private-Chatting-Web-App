@@ -61,9 +61,14 @@ router.get("/signed-index", checkAuthenticated, (req, res) => {
   res.render("signed-index");
 });
 
-router.get("/admin-index", checkAuthenticatedAdmin, (req, res) => {
+//Before redirecting to admin's home page,
+//The function storeCounters is called in the middleware countersController.counters
+//Then the counters are imported from '../utils/counters' and sent to the client side
+const { counters } = require("../utils/counters");
+const countersController = require('../controllers/counters-controller');
+router.get("/admin-index", countersController.counters, checkAuthenticatedAdmin, (req, res) => {
   room.deleteRoom(); //to make sure room object values are reset before creating new room in home page
-  res.render("admin-index");
+  res.render("admin-index", {appVisitorsCount: counters[0], roomsCreatedCount: counters[1]});
 });
 
 router.get("/add-admin", checkAuthenticatedAdmin, (req, res) => {
