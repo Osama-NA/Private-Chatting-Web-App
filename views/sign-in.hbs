@@ -42,10 +42,18 @@
         <form action="/db/sign-in" method="post">
           <h3>Sign In</h3>
           <label for="email">Email:</label>
+          
+          {{#if email}}
           <input type="email" value="{{email}}" placeholder="johnsmith@gmail.com" name="email" id="email" maxlength="100" required />
+          {{else}}
+          <input type="email" value="demo@gmail.com" placeholder="johnsmith@gmail.com" name="email" id="email" maxlength="100" required />
+          {{/if}}
           <label for="sign-in-password">Password:</label>
-          <input type="password" value="{{password}}" placeholder="********" id="password" name="password" minlength="8" maxlength="25"
-            required />
+          {{#if password}}
+          <input type="password" value="{{password}}" placeholder="********" id="password" name="password" minlength="8" maxlength="25" required />
+          {{else}}
+          <input type="password" value="demouser" placeholder="********" id="password" name="password" minlength="8" maxlength="25" required />
+          {{/if}}
           <input type="submit" name="sign-in-submit" id="sign-in" value="Sign in" />
         </form>
       </div>
