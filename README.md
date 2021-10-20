@@ -81,7 +81,13 @@
 
 ## Admins
 
-- Amins have the same usecases as the basic users, but admins can also view and ban users
+- Admin home page
+
+![admin_home_page](https://user-images.githubusercontent.com/78507737/136858280-74c58f65-3fcf-4283-bc19-8f2398d49614.PNG)
+
+
+
+- Admins can view and ban users
 
 ![users](https://user-images.githubusercontent.com/78507737/135309102-3793b492-c82d-4996-9d64-2e76f45e8c19.PNG)
 
