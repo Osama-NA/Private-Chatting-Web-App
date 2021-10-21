@@ -45,30 +45,33 @@ body {
 
 .header .logo img {
   margin-left: 2rem;
-  margin-top: -0.7rem;
-  width: 100px;
-  height: 100px;
+  width: auto;
+  height: 100%;
+  transform: scale(.8);
 }
 
 .header .nav {
-  display: block;
-  margin-top: 1.8rem;
-  margin-right: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1.8rem 3.6rem;
 }
 
 .header .nav a {
   font-size: 18px;
-  padding-left: 1rem;
   text-decoration: none;
-  color: white;
+  padding-left: 1.5rem;
+    color: rgb(206, 206, 206);
   transition: all 0.5s ease;
 }
 
 .header .nav a:hover {
-  color: #8e98f5;
+  color: #ffffff;
 }
 
 .burger {
+  display: none;
   position: absolute;
   top: 1.8rem;
   right: 1.8rem;
@@ -277,7 +280,6 @@ footer section #report-bug {
 }
 footer a {
   cursor: pointer;
-  padding: 1rem;
   text-decoration: none;
   color: rgb(255, 255, 255);
 }
@@ -397,7 +399,6 @@ footer i {
 @media (max-width: 767px) {
 
   /* ELEMENTS HIDDEN IN SMALL SCREEN */
-  #background-img,
   #texting-img,
   #footer-img,
   #bubble1,
@@ -408,9 +409,22 @@ footer i {
     display: none;
   }
 
+  #background-img {
+    width: 95%;
+    height: auto;
+    opacity: 0.6;
+    position: absolute;
+    top: 2%;
+    z-index: 0;
+    animation-name: background-img;
+    animation-duration: 5s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+  }
+
   /* HEADER */
-  header nav {
-    width: 100%;
+  .header .logo img{
+    margin-left: 0rem;
   }
   .header .nav {
     margin: 0;
@@ -418,18 +432,19 @@ footer i {
     top: 80px;
     left: 0;
     width: 100%;
+    height: 50px;
     text-align: center;
+    background-color: rgba(27, 27, 27, 0.938);
   }
   .header .nav a {
-    border-top: solid 3px rgba(255, 255, 255, 0.938);
-    padding: 0.5rem;
     display: block;
     font-size: 16px;
-    background-color: #8e98f5;
+    font-weight: lighter;
+    padding-left: 0;
   }
-  .header .nav a:hover {
-    color: rgba(27, 27, 27, 0.938);
-  }
+    .burger {
+      display: block;
+    }
 
   /* CREATE ROOM */
   .create-room-btn {
