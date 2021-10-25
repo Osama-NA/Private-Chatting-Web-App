@@ -17,22 +17,21 @@ form{
     height: auto;
     width: auto;
     background-color: rgb(255, 255, 255);
-    border: 2px solid #383838;
+    border: 1.5px solid #383838;
     border-radius: 10px;
-    padding: 1rem 3rem;5
-    margin: 1rem;
+    padding: 1rem 2rem;
 }
 
 label{
     color: #7874f2;
     font-size: 32px;
     font-weight: bold;
-    padding-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 input,button{
     border: 1px solid #383838;
     font-size: 18px;
-    padding: .6rem;
+    padding: .8rem;
     margin: 1rem 0;
     outline: none;
 }
@@ -47,35 +46,38 @@ input,button{
 }
 
 #submit{
-    width: 70px;
+    width: 110px;
     color: #fff;
     background-color: #383838;
     border-radius: 0 5px 5px 0;
     border-left: none;
     cursor: pointer;
 }
-
 a{
     color: #7874f2;
-    padding: 1rem 0 0;
-    font-size: 18px;
+    padding: .5rem 0 0;
+    font-size: 16px;
     text-align: center;
 }
 
 @media (max-width: 767px){
     form{
         padding: .6rem 1rem;
+        border-radius: 7px;
     }
     label{
-        font-size: 22px;
-        padding-bottom: 0.5rem;
+        font-size: 20px;
+        margin: 0 0 .8rem;
     }
     a{
-        font-size: 14px;
-        padding: 0.5rem 0 0;
+        font-size: 12px;
+        padding: 0;
     }
     input, button{
-        font-size: 14px;
-        padding: 0.4rem 0.5rem;
+        font-size: 12px;
+        padding: .5rem;
+    }
+    #submit{
+        width: 75px;
     }
 }

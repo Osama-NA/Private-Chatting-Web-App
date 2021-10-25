@@ -108,8 +108,8 @@ main #create-room {
   text-decoration: none;
   color: white;
   font-size: 24px;
-  padding: 1.5rem;
-  border-radius: 15px;
+  padding: 1.3rem 1.5rem;
+  border-radius: 10px;
   background-color: #7874f2;
   box-shadow: 0px 1.5px 3px 0.3px rgba(0, 0, 0, 0.678);
   transition: all 0.4s ease;
@@ -450,6 +450,7 @@ footer i {
   .create-room-btn {
     min-width: 17rem;
     font-size: 22px;
+    padding: 1.3rem 1.5rem;
   }
 
   /* ABOUT */

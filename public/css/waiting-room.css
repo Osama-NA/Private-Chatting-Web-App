@@ -17,40 +17,39 @@ body{
     height: auto;
     width: auto;
     background-color: rgb(255, 255, 255);
-    border: 2px solid #383838;
+    border: 1.5px solid #383838;
     border-radius: 10px;
-    padding: 1rem 3rem;
-    margin: 1rem;
+    padding: 0rem 2rem;
 }
 h1{
-    font-size: 42px;
+    font-size: 32px;
     color: #7874f2;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
 }
 p, button, input, a{
-    color: rgb(0, 0, 0);
+    color: rgb(31, 31, 31);
 }
 a{
     color: #7874f2;
-    padding: 2rem 0 1.5rem;
-    font-size: 18px;
+    padding: 0 0 1rem;
+    font-size: 16px;
     text-align: center;
 }
 input{
     width: 100%;
 }
 p{  
-    font-size: 22px;
+    font-size: 18px;
 }
 #copy-link{
     display:flex;
     flex-direction: row;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 #copy-link button{
-    width:165px;
+    width: 165px;
     color: #ffffff;
-    background-color: #474747;
+    background-color: #383838;
     border-radius: 0 5px 5px 0;
     border-left: none;
     cursor: pointer;
@@ -62,34 +61,40 @@ p{
 #url, #copy-link button{
     font-size: 18px;
     border: 1px solid #383838;
-    padding: .6rem;
+    padding: .8rem;
     outline: none;
 }
 
 @media (max-width: 767px){
     .container main{
-        padding: 0 1rem;
+        padding: 0 .8rem;
+        margin: 1rem;
+        border-radius: 7px;
     }
 
     h1{
-        font-size: 22px;
+        font-size: 18px;
         margin-bottom: 1rem;
     }
     a{
-        font-size: 14px;
-        padding: 1rem 0;
+        font-size: 12px;
+        padding: .8rem;
     }
     p{
-        font-size: 16px;
+        font-size: 12px;
     }
     #copy-link button, #url{
-        padding: 0.4rem .5rem;
-        font-size: 14px;
+        padding: .5rem;
+        font-size: 12px;
     }
     #copy-link{
-        margin-bottom: 0.5rem;
+        margin-bottom: 0rem;
     }
     #copy-link button{
+        border-radius: 0 4px 4px 0;
         width:120px;
+    }
+    #url{
+        border-radius: 4px 0 0 4px;
     }
 }

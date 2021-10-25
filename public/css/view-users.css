@@ -33,24 +33,26 @@ body {
   position: relative;
   max-width: 270px;
   min-width: 270px;
-  background-color: #2e2e30;
+  background-color: rgba(27, 27, 27, 0.938);
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .logo {
   width: 100%;
-  padding-left: 1.7rem;
+  padding-left: 1rem;
 }
 
 .logo img {
   width: 150px;
-  height: 160px;
-  padding-right: 0.5rem;
+  height: auto;
+  margin: 2.8rem 0;
 }
 
 .burger {
+  display: none;
   position: absolute;
   top: 4.3rem;
   right: 2rem;
@@ -63,13 +65,9 @@ body {
   width: 23px;
   margin-bottom: 5px;
   border-radius: 50px;
-  background-color: #ffffffe8;
-  transition: all 0.5s ease;
+  background-color: #8b88f5;
 }
 
-.burger:hover > .slice {
-  background-color: #7874f2;
-}
 
 .menu {
   display: flex;
@@ -206,19 +204,18 @@ td{
     min-width: 55px;
     max-width: 55px;
   }
-  .menu p,
-  .nav .footer,
-  .logo img {
+  .menu p, .nav .footer a span, .nav .footer p, .logo img{
     display: none;
   }
   .logo {
-    padding-left: 1rem;
+    padding-left: 0.3rem;
   }
   .logo img {
-    width: 120px;
-    height: 130px;
+    width: 135px;
+    margin: 2.1rem 0;
   }
   .burger {
+    display: block;
     top: 3.3rem;
     right: 1rem;
   }

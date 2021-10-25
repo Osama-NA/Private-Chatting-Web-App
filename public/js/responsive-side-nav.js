@@ -1,10 +1,10 @@
-const footer = document.querySelector(".footer");
+const menuText = document.querySelector(".menu p");
 
 //JQuery Function That Hides And Displays Side Bar Navigation
 $(".burger").click(function (e) {
-  const style = getComputedStyle(footer);
+  const style = getComputedStyle(menuText);
   const getDisplayStyle = style.display;
-  if (getDisplayStyle === "flex") {
+  if (getDisplayStyle === "inline") {
     if (screen.width <= 767) {
       $(".menu").css("padding", "8.3rem 1.1rem");
       $(".nav").css("min-width", "55px");
@@ -19,7 +19,8 @@ $(".burger").click(function (e) {
       $(".menu i").css("padding-bottom", "1rem");
     }
     $(".menu p").hide();
-    $(".footer").hide();
+    $(".footer span").hide();
+    $(".footer #footer-text").hide();
     $(".logo img").hide();
   } else {
     if (screen.width <= 767) {
@@ -31,7 +32,7 @@ $(".burger").click(function (e) {
     $(".nav").animate({ minWidth: "270px" });
     $(".nav").animate({ maxWidth: "270px" });
     $("p").css("display", "inline");
-    $(".footer").css("display", "flex");
-    $(".logo img").css("display", "block");
+    $(".footer span").css("display", "inline");
+    $(".logo img").show();
   }
 });
