@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--Refreshing Page Every 2 Seconds-->
-    <meta http-equiv="refresh" content="2">
+    <!--Refreshing Page Every 3 Seconds-->
+    <meta http-equiv="refresh" content="3">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/waiting-room.css">
@@ -14,7 +14,11 @@
 <body>
     <div class="container">
       <main>
-        <h1>Waiting for a user to join chat room . . .</h1>
+        <h1>Waiting for a user to join chat room 
+          <span class="span1 waiting-loader">. </span>
+          <span class="span2">. </span>
+          <span class="span3">.</span>
+        </h1>
         <p>Send your friend the link bellow to join the chat room:</p>
         <div id="copy-link">
           <!--Room url is generated and passed from controllers/waiting-room.js -->
@@ -33,5 +37,6 @@
         document.execCommand("copy");
       }
     </script>
+    <script src="/js/waitingRoom.js"></script>
 </body>
 </html>

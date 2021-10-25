@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
 
     socket.emit("message", formatMessage(chatBot, "Welcome to Seguro Chatting!"));
 
-    socket.broadcast.to(user.room).emit("message", formatMessage(chatBot, `${user.name} has joined the chat`));
+    socket.broadcast.to(user.room).emit("message", formatMessage(chatBot, `${user.name} joined the chat`));
   });
 
   //Listen For Chat Messages
@@ -55,7 +55,7 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     const user = userLeave(socket.id);
 
-    if(user) io.to(user.room).emit("message", formatMessage(chatBot, `${user.name} has left the chat`)); 
+    if(user) io.to(user.room).emit("message", formatMessage(chatBot, `${user.name} left the chat`)); 
   });
 
 });
