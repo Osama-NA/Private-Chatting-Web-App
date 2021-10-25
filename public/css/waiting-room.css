@@ -26,6 +26,24 @@ h1{
     color: #7874f2;
     margin-bottom: 2rem;
 }
+
+/* LOADING LITTLE CIRCLES IN WAITING ROOM PAGE */
+@keyframes loading{
+    0%{
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.waiting-loader{
+    animation-name: loading;
+    animation-duration: .35s;
+    animation-timing-function: ease-in-out;
+}
+
 p, button, input, a{
     color: rgb(31, 31, 31);
 }
