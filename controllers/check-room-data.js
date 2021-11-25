@@ -21,7 +21,7 @@ exports.checkRoomData = (req, res, next) => {
   const roomUsername = roomAccess === "user two" ? roomData["usernameTwo"] : roomAccess === "user one" ? roomData["usernameOne"] : undefined;
 
   if (roomID && roomAccess && roomUsername) {
-    createOrUpdateRoom(roomID, roomAccess, res);
+    createOrUpdateRoom(roomID, roomAccess);
     room.setAccessTwo("false"); //Needed in localhost server to allow access by user one
     return next();
   }
@@ -31,7 +31,7 @@ exports.checkRoomData = (req, res, next) => {
 
 //If access by user one, update access_one in chat rooms table 
 //If access by user two, inset new room chat rooms table with access_one set to 0 and access_two set to 1
-function createOrUpdateRoom(roomID, roomAccess, res) {
+function createOrUpdateRoom(roomID, roomAccess) {
   pool.getConnection((error, connection) => {
     if (error) console.log("Failed to get pool connection . . ." + error);
 
@@ -46,7 +46,9 @@ function createOrUpdateRoom(roomID, roomAccess, res) {
           console.log("User one joined chat room");
         });
       });
-    } else if (roomAccess == "user two") {
+      return;
+    }
+    if (roomAccess == "user two") {
       //Before Setting access by user two, check if chat room is full
       //if yes, then set in local storage a value to be used in next 
       //middleware to redirect used to 'room expired' page
@@ -54,11 +56,7 @@ function createOrUpdateRoom(roomID, roomAccess, res) {
         if (error) console.log("Failed to select access_two, access_one from chat_rooms: " + error);
 
         if (results.length > 0) {
-          try{
-            localStorage.setItem("joining expired room", true);
-          }catch(e){
-            console.log("Routing " + e);
-          }
+          localStorage.setItem("joining expired room", true);
         }else if (room.getRoom()["id"] != undefined) {
           connection.query("INSERT INTO chat_rooms SET ?", 
             { room_id: roomID, access_one: 0, access_two: 1, no_of_access: 1 }, 

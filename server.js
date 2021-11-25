@@ -30,20 +30,21 @@ io.on("connection", (socket) => {
 
   //When a user joins chat room
   socket.on("join-room", ({ id, username }) => {
-    const user = userJoin(socket.id, username, id);
+    const userDataOnJoin = userJoin(socket.id, username, id);
 
-    socket.join(user.room);
+    socket.join(userDataOnJoin.room);
 
     socket.emit("message", formatMessage(chatBot, "Welcome to Seguro Chatting!"));
 
-    socket.broadcast.to(user.room).emit("message", formatMessage(chatBot, `${user.name} joined the chat`));
+    socket.broadcast.to(userDataOnJoin.room).emit("message", formatMessage(chatBot, `${userDataOnJoin.name} joined the chat`));
   });
 
   //Listen For Chat Messages
   socket.on("chat-message", (message) => {
-    const user = getCurrentUser(socket.id);
-    saveMessage(user.room, formatMessage(user.name, message));
-    io.to(user.room).emit("message", formatMessage(user.name, message));
+    const userDataOnMessage = getCurrentUser(socket.id);
+    
+    saveMessage(userDataOnMessage.room, formatMessage(userDataOnMessage.name, message));
+    io.to(userDataOnMessage.room).emit("message", formatMessage(userDataOnMessage.name, message));
   });
 
   //Runs when a user clicks save chat
@@ -53,9 +54,12 @@ io.on("connection", (socket) => {
 
   //Runs When Client Disconnects
   socket.on("disconnect", () => {
-    const user = userLeave(socket.id);
-
-    if(user) io.to(user.room).emit("message", formatMessage(chatBot, `${user.name} left the chat`)); 
+    const userDataOnLeave = userLeave(socket.id);
+    
+    console.log(userDataOnLeave)
+    if (userDataOnLeave) {
+      io.to(userDataOnLeave.room).emit("message", formatMessage(chatBot, `${userDataOnLeave.name} left the chat`));
+    }
   });
 
 });

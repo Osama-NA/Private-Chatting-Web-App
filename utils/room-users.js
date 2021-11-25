@@ -62,12 +62,12 @@ function userLeave(id) {
 
     //Remove Room From chat_rooms Table If Both Users Left The Room, and delete messages from messages table
     const user = users.find((user) => user.id === id);
-    if (user) {
+
+    if (user && room.getRoom()) {
       connection.query("SELECT no_of_access FROM chat_rooms WHERE room_id = ?", [user.room],
         (error, results) => {
           if (error) console.log("Failed to select no of accesses from chat_rooms: " + error);
-          console.log(results);
-          if (results) {
+          if (results[0]) {
             if (results[0]["no_of_access"] === 2) {
               connection.query("UPDATE chat_rooms SET no_of_access = 1 WHERE room_id= ?", [user.room], (error) => {
                 if (error) console.log("Failed to update chat_rooms no_of_access: " + error);
@@ -83,14 +83,14 @@ function userLeave(id) {
               room.deleteRoom(); //Unset all values of roomInfo in /utils/room
             }
           }
+
+          const index = users.findIndex((user) => user.id === id);
+          room.deleteRoom(); //To disable user from joining a chat room again before creating a new room
+
+          if (index > -1) return users.splice(index, 1)[0];
         }
       );
     }
-
-    const index = users.findIndex((user) => user.id === id);
-    room.deleteRoom(); //To disable user from joining a chat room again before creating a new room
-
-    if (index !== -1) return users.splice(index, 1)[0];
   });
 }
 

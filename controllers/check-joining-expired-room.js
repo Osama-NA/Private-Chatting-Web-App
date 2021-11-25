@@ -14,7 +14,7 @@ exports.joiningExpiredRoom = (req, res, next) => {
     }
 
     if (localStorage.getItem("joining expired room") === 'true') {
-        localStorage.removeItem("joining expired room", false);
+        localStorage.removeItem("joining expired room");
         return res.redirect("/room-expired");
     }
 
