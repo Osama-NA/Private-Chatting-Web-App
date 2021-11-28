@@ -18,58 +18,57 @@
 
 - Click the 'Create Chatting Room' button in the home page
 
-![guest_home](https://user-images.githubusercontent.com/78507737/135297487-b83e4f7e-3a9f-47c4-bf88-5d6fc84152a1.PNG)
+![home_page](https://user-images.githubusercontent.com/78507737/143783022-fffdc320-1e65-4ebb-b9e7-bcdee8a89ef0.JPG)
 
 
 
 - To save your chat, you should sign in before creating a room. After signing in you can click the 'Create Chatting Room' button in the home page
 
-![home](https://user-images.githubusercontent.com/78507737/135297493-273c7ff9-b063-4a25-916f-16879682ac06.PNG)
+![signed_home_page](https://user-images.githubusercontent.com/78507737/143783014-02ae80d7-fe83-440f-aa88-de5c533875e2.JPG)
 
 
 
 - If user is not signed-in, he will be asked to enter his name before joining chat room
 
-![get_name](https://user-images.githubusercontent.com/78507737/135298032-502e8ad4-fd9d-42aa-9652-12cb9ad91d90.PNG)
+![enter_name](https://user-images.githubusercontent.com/78507737/143783026-c9d981e5-b779-49a2-80c6-56d0bb9e085a.JPG)
 
 
 
 - Click 'Copy link' and send it to a friend you want to have a private chat with
 
-![waiting-room](https://user-images.githubusercontent.com/78507737/135298225-34bbeae4-d3ff-455b-bb34-a789697df478.PNG)
+![waiting_room](https://user-images.githubusercontent.com/78507737/143783007-d1b06c26-187e-4fd4-9343-b0a903644716.JPG)
 
 
 
 - After a user joins through the link, the user can either sign in first to be able to save his chat, or just enter his name and join the chat room
 
-![join_room](https://user-images.githubusercontent.com/78507737/135298927-a32770df-c0ff-4625-9a5b-9cb85cdae364.PNG)
-
-![user2chat](https://user-images.githubusercontent.com/78507737/135300379-bbb3d204-bfbb-4566-bd18-ef3bcc223520.PNG)
+![enter_name2](https://user-images.githubusercontent.com/78507737/143783410-ce195609-6481-4a35-9b28-efd82bb26271.JPG)
+![chat_room](https://user-images.githubusercontent.com/78507737/143783039-227ef577-e951-404b-9e2f-45b0127fb2e7.JPG)
 
 
 
 - When the user's friend joins the chat room, he will be automatically redirected to the chat room
 
-![user1chat](https://user-images.githubusercontent.com/78507737/135300564-4c764d7e-db9f-40ab-88bb-8b6e86e5b319.PNG)
+![chat_room_user1](https://user-images.githubusercontent.com/78507737/143783037-aec82dfa-7fb2-4293-8b6e-61b84f482f1a.JPG)
 
 
 
 ## Sign Up
 
-![sign_up](https://user-images.githubusercontent.com/78507737/135303276-117c3a34-e2a5-44d1-bdfe-ca6de7be8da8.PNG)
+![sign_up](https://user-images.githubusercontent.com/78507737/143783017-e1e852c3-1df9-4701-8c17-a7c90ed85da9.JPG)
 
 
 
 ## Sign In
 
-![sign_in](https://user-images.githubusercontent.com/78507737/135309063-0ee1a8be-4dd3-4963-bba0-0478b10fcaf8.PNG)
+![sign_in](https://user-images.githubusercontent.com/78507737/143783021-f82f196e-6e88-4b3f-b053-847ebd92b62a.JPG)
 
 
 ## Download your chat logs
 
 - Click the download icon of the chat log row you want to save
 
-![_logs](https://user-images.githubusercontent.com/78507737/135313667-2777663d-38ce-447d-9b54-df1a20ac1a27.PNG)
+![chat_logs](https://user-images.githubusercontent.com/78507737/143782990-6ddb23bc-9c69-43a8-ab70-3fb8506f2d9b.JPG)
 
 
 
@@ -83,32 +82,31 @@
 
 - Admin home page
 
-![admin_home_page](https://user-images.githubusercontent.com/78507737/136858280-74c58f65-3fcf-4283-bc19-8f2398d49614.PNG)
+![admin_home](https://user-images.githubusercontent.com/78507737/143782996-43570cfa-b951-4d45-baa9-7c7e5591cbdc.JPG)
 
 
 
 - Admins can view and ban users
 
-![users](https://user-images.githubusercontent.com/78507737/135309102-3793b492-c82d-4996-9d64-2e76f45e8c19.PNG)
+![view_users](https://user-images.githubusercontent.com/78507737/143783011-df99642b-b35c-49af-ac75-0f61f1f6a527.JPG)
 
 
 
 - Admins can view reported bugs and mark them solved or unsolved
 
-![reports](https://user-images.githubusercontent.com/78507737/135304252-9bb11850-e0ea-4521-b8ad-08eda50fd55b.PNG)
+![bug_reports](https://user-images.githubusercontent.com/78507737/143782998-dd61ec71-8ae7-4dd7-a590-ab06f70fd317.JPG)
 
 
 
 - Admins can view submitted contact forms and delete them
 
-![forms](https://user-images.githubusercontent.com/78507737/135304770-1de55c73-9c73-4783-8496-b813b103cb5f.PNG)
+![contact_forms](https://user-images.githubusercontent.com/78507737/143783006-36d9e6be-54c5-43c8-8ee6-c78e50714150.JPG)
 
 
 
 # Entity Relationship Diagram
 
 ![Seguro ERD](https://user-images.githubusercontent.com/78507737/135308758-73808db1-5b1a-4004-b536-eb2eb1e6435c.png)
-
 
 
 
