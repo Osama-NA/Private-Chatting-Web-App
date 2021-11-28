@@ -22,7 +22,7 @@
 
 
 
-- To save your chat, you should sign in then click the 'Create Chatting Room' button in the home page
+- To save your chat, you should sign in before creating a room. After signing in you can click the 'Create Chatting Room' button in the home page
 
 ![home](https://user-images.githubusercontent.com/78507737/135297493-273c7ff9-b063-4a25-916f-16879682ac06.PNG)
 
