@@ -47,7 +47,7 @@
 
 
 
-- When the user's friend joins the chat room, he will be automatically redirected to the chat room
+- When the invited user joins the chat room, the invitee will be automatically redirected to the chat room
 
 ![chat_room_user1](https://user-images.githubusercontent.com/78507737/143783037-aec82dfa-7fb2-4293-8b6e-61b84f482f1a.JPG)
 
