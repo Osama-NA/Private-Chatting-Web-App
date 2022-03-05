@@ -52,21 +52,21 @@ function getCurrentUser(id) {
 
 //User Leaves Chat
 function userLeave(id) {
+  const user = users.find((user) => user.id === id);
+
   pool.getConnection((error, connection) => {
     if (error) console.log("Failed to get pool connection . . ." + error);
 
-    //Remove User From room_users Table
     connection.query("DELETE FROM room_users WHERE id = ?", [id], (error) => {
       if (error) console.log("Failed to delete from room_users: " + error);
     });
 
     //Remove Room From chat_rooms Table If Both Users Left The Room, and delete messages from messages table
-    const user = users.find((user) => user.id === id);
-
     if (user && room.getRoom()) {
       connection.query("SELECT no_of_access FROM chat_rooms WHERE room_id = ?", [user.room],
         (error, results) => {
           if (error) console.log("Failed to select no of accesses from chat_rooms: " + error);
+
           if (results[0]) {
             if (results[0]["no_of_access"] === 2) {
               connection.query("UPDATE chat_rooms SET no_of_access = 1 WHERE room_id= ?", [user.room], (error) => {
@@ -76,22 +76,22 @@ function userLeave(id) {
               connection.query("DELETE FROM chat_rooms WHERE room_id = ?", [user.room], (error) => {
                 if (error) console.log("Failed to delete from chat_rooms: " + error);
               });
+
               connection.query("DELETE FROM messages WHERE room_id = ?", [user.room], (error) => {
                 connection.release();
                 if (error) console.log("Failed to delete from messages: " + error);
               });
+
               room.deleteRoom(); //Unset all values of roomInfo in /utils/room
             }
           }
 
-          const index = users.findIndex((user) => user.id === id);
           room.deleteRoom(); //To disable user from joining a chat room again before creating a new room
-
-          if (index > -1) return users.splice(index, 1)[0];
         }
       );
     }
   });
+  return user;
 }
 
 //Every message sent is saved in messages table until users leave room
@@ -145,7 +145,6 @@ function saveChat(id) {
         }
       });
     })
-    
   }
 }
 
