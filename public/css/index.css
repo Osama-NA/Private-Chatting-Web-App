@@ -111,12 +111,12 @@ main #create-room {
   padding: 1.3rem 1.5rem;
   border-radius: 10px;
   background-color: #7874f2;
-  box-shadow: 0px 1.5px 3px 0.3px rgba(0, 0, 0, 0.678);
+  box-shadow: 0px 3px 10px 0px #5853f06b;
   transition: all 0.4s ease;
 }
 
 .create-room-btn:hover {
-  box-shadow: 0px 1.8px 3px 0.3px rgb(0, 0, 0);
+  box-shadow: 0px 3px 10px 3px #5853f06b;
 }
 
 .sign-in {
@@ -154,7 +154,7 @@ main #create-room {
   height: auto;
   padding: 1rem 2rem;
   font-size: 18px;
-  box-shadow: 0px 2px 4px 0.5px rgba(0, 0, 0, 0.204);
+  box-shadow: -3px 8px 20px -2px #0000aa14;
   background-color: #dfe2fe54;
   margin-top: 1.5rem;
   border-radius: 30px;
@@ -192,7 +192,7 @@ main #create-room {
   width: 45%;
   padding: 1rem 2rem;
   border-radius: 30px;
-  box-shadow: 0px 2px 4px 0.5px rgba(0, 0, 0, 0.204);
+  box-shadow: -3px 8px 20px -2px #0000aa14;
   background-color: #dfe2fe54;
   display: flex;
 }

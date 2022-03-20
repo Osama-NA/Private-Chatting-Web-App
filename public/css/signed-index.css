@@ -180,12 +180,12 @@ body {
   padding: 1.2rem 1.5rem;
   border-radius: 10px;
   background-color: #7874f2;
-  box-shadow: 0px 1.5px 3px 0.3px rgba(0, 0, 0, 0.678);
+  box-shadow: 0px 3px 10px 0px #5853f06b;
   transition: all 0.4s ease;
 }
 
 .create-room-btn:hover {
-  box-shadow: 0px 1.8px 3px 0.3px rgb(0, 0, 0);
+  box-shadow: 0px 3px 10px 3px #5853f06b;
 }
 
 /* MEDIA */

@@ -96,7 +96,7 @@ section #sign-in-form form {
   flex-direction: column;
   padding: 1.5rem 2.5rem;
   border-radius: 30px;
-  box-shadow: 0px 2px 4px 0.5px rgba(0, 0, 0, 0.204);
+  box-shadow: -3px 8px 20px -2px #0000aa14;
   background-color: #dfe2fe54;
 }
 
