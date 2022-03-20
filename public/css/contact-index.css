@@ -52,6 +52,7 @@ body {
 }
 
 .burger {
+  display: none;
   position: absolute;
   top: 4.3rem;
   right: 2rem;
