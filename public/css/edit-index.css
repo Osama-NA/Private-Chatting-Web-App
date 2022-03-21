@@ -194,6 +194,7 @@ body {
   width: 120px;
   letter-spacing: 1px;
   transition: all 0.4s ease;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .form .submit:hover, .form .submit-password:hover {
