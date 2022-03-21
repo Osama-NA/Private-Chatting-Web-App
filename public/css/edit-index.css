@@ -143,6 +143,7 @@ body {
   overflow-y: auto;
   flex-direction: column;
   justify-content: center;
+  padding: 2rem 0;
 }
 
 .form {
@@ -164,6 +165,7 @@ body {
 .form .update {
   display: flex;
   flex-direction: column;
+  margin-bottom: 3rem;
 }
 .form label {
   font-size: 18px;
@@ -185,16 +187,15 @@ body {
   font-weight: bold;
   font-size: 16px;
   padding: 1rem;
-  margin: 0 0 2rem 0;
   cursor: pointer;
   border: none;
   border-radius: 7px;
   color: rgb(255, 255, 255);
   background-color: #7874f2;
   width: 120px;
+  margin: 0;
   letter-spacing: 1px;
   transition: all 0.4s ease;
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .form .submit:hover, .form .submit-password:hover {
@@ -282,10 +283,10 @@ body {
   .form .submit, .form .submit-password {
     font-size: 14px;
     width: 100px;
-    margin: 0 0 1.5rem 0;
     padding: 0.6rem ;
   }
   .form .update{
       flex-direction: column;
+      margin-bottom: 1rem;
   }
 }
