@@ -68,7 +68,6 @@ body {
   background-color: #8b88f5;
 }
 
-
 .menu {
   display: flex;
   flex-direction: column;
@@ -165,7 +164,6 @@ body {
 .form .update {
   display: flex;
   flex-direction: column;
-  margin-bottom: 3rem;
 }
 .form label {
   font-size: 18px;
@@ -173,7 +171,8 @@ body {
   margin: 1rem 0;
 }
 
-.form input {
+.form input,
+.form button {
   margin-bottom: 1rem;
   font-size: 16px;
   width: 100%;
@@ -183,7 +182,8 @@ body {
   border-radius: 7px;
 }
 
-.form .submit{
+.form .submit,
+.form .submit-password {
   font-weight: bold;
   font-size: 16px;
   padding: 1rem;
@@ -196,15 +196,20 @@ body {
   margin: 0;
   letter-spacing: 1px;
   transition: all 0.4s ease;
+  margin-bottom: 3.5rem;
 }
+  .form .submit-password{
+    margin-bottom: 4rem;
+  }
 
-.form .submit:hover, .form .submit-password:hover {
+.form .submit:hover,
+.form .submit-password:hover {
   background-color: #5c57f1f3;
 }
 
 /* MEDIA */
 
-@media (min-width: 1600px){
+@media (min-width: 1600px) {
   .container {
     width: 1100px;
   }
@@ -212,7 +217,6 @@ body {
     width: 1100px;
   }
 }
-
 
 /* Tablet Screen */
 @media (max-width: 1100px) {
@@ -227,7 +231,10 @@ body {
     min-width: 55px;
     max-width: 55px;
   }
-  .menu p, .nav .footer a span, .nav .footer p, .logo img{
+  .menu p,
+  .nav .footer a span,
+  .nav .footer p,
+  .logo img {
     display: none;
   }
   .logo {
@@ -240,7 +247,7 @@ body {
   .burger {
     display: block;
     top: 3.3rem;
-    right: 1rem ;
+    right: 1rem;
   }
   .burger .slice {
     height: 4px;
@@ -263,8 +270,8 @@ body {
   .footer #footer-text {
     font-size: 10px;
   }
-  .content{
-      overflow: scroll;
+  .content {
+    overflow: scroll;
   }
   .form {
     width: 85%;
@@ -280,13 +287,14 @@ body {
   .form label {
     font-size: 16px;
   }
-  .form .submit, .form .submit-password {
+  .form .submit,
+  .form .submit-password {
     font-size: 14px;
     width: 100px;
-    padding: 0.6rem ;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
   }
-  .form .update{
-      flex-direction: column;
-      margin-bottom: 1rem;
+  .form .update {
+    flex-direction: column;
   }
 }
