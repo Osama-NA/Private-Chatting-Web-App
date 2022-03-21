@@ -136,29 +136,13 @@ body {
 .content {
   position: relative;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
   flex-direction: column;
   justify-content: center;
-}
-
-.content::before{
-  content: "";
-  background-image: url(../images/waves.png);
-  background-position: 0px -50px;
-  background-repeat: no-repeat;
-  background-size: 200% 120%;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: -300px;
-  left: 0px;
-  width: inherit;
-  height: inherit;
-  opacity: 0.75;
 }
 
 .form {
@@ -212,7 +196,7 @@ body {
   transition: all 0.4s ease;
 }
 
-.form .submit:hover, .form #submit-password:hover {
+.form .submit:hover, .form .submit-password:hover {
   background-color: #5c57f1f3;
 }
 
@@ -294,7 +278,7 @@ body {
   .form label {
     font-size: 16px;
   }
-  .form #submit, .form #submit-password {
+  .form .submit, .form .submit-password {
     font-size: 14px;
     width: 100px;
     margin-left: 0;

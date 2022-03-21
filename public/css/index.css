@@ -84,12 +84,8 @@ body {
   height: 4px;
   width: 25px;
   border-radius: 50px;
-  background-color: #7874f2;
+  background-color: #ffffff;
   transition: all 0.5s ease;
-}
-
-.burger:hover > .slice {
-  background-color: #9996f0;
 }
 
 /* MAIN BUTTON */
@@ -152,18 +148,21 @@ main #create-room {
   width: 45%;
   color: rgb(56, 56, 56);
   height: auto;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 1.5rem;
   font-size: 18px;
   box-shadow: -3px 8px 20px -2px #0000aa14;
   background-color: #dfe2fe54;
   margin-top: 1.5rem;
-  border-radius: 30px;
+  border-radius: 20px;
   z-index: 1;
+  display: grid;
+  place-items: center;
 }
 
 #about .about-text h2 {
   font-size: 26px !important;
   color: #7874f2;
+  margin-bottom: .5rem;
 }
 
 #about .about-text a {
@@ -191,7 +190,7 @@ main #create-room {
   flex-direction: column;
   width: 45%;
   padding: 1rem 2rem;
-  border-radius: 30px;
+  border-radius: 20px;
   box-shadow: -3px 8px 20px -2px #0000aa14;
   background-color: #dfe2fe54;
   display: flex;
@@ -424,9 +423,11 @@ footer i {
 
   /* HEADER */
   .header .logo img{
+    width: 160px;
     margin-left: 0rem;
   }
   .header .nav {
+    display: none;
     margin: 0;
     position: absolute;
     top: 80px;
@@ -467,10 +468,12 @@ footer i {
     padding: 1.5rem;
     margin: 0;
     font-size: 16px;
+    border-radius: 15px;
   }
 
   /* CONTACT */
   #contact form {
+    border-radius: 15px;
     padding: 1rem 1.3rem;
     width: 85%;
     background-color: #dfe2fe54;

@@ -142,15 +142,6 @@ body {
   justify-content: space-evenly;
 }
 
-.content #waves {
-  position: absolute;
-  bottom: -100px;
-  left: 0px;
-  width: 200%;
-  height: 120%;
-  z-index: 0;
-  opacity: 0.75;
-}
 
 .form {
   display: flex;
@@ -294,7 +285,9 @@ body {
       font-size: 16px;
   }
   .form #submit, .form #reset{
+    margin: 1rem 0;
       font-size: 14px;
       width: 100px;
+    padding: 0.6rem ;
   }
 }

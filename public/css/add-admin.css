@@ -124,16 +124,6 @@
     justify-content: space-evenly;
   }
   
-  .content #waves {
-    position: absolute;
-    bottom: -100px;
-    left: 0px;
-    width: 200%;
-    height: 120%;
-    z-index: 0;
-    opacity: 0.75;
-  }
-  
   .add-admin-form {
     display: flex;
     flex-direction: column;
@@ -250,9 +240,6 @@
     .footer #footer-text{
       font-size: 10px;
     }
-    .content #waves{
-      width: 300%;
-    }
     .add-admin-form {
       width: 90%;
     }
@@ -264,10 +251,12 @@
     }
     .add-admin-form input, .add-admin-form #submit{
       font-size: 14px;
+      padding: 0.8rem;
     }
     .add-admin-form #submit{
       width: 100px;
       padding: 0.8rem;
       margin: 1rem auto;
+      padding: 0.6rem ;
     }
   }

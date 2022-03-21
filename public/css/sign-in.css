@@ -72,12 +72,8 @@ body {
   height: 4px;
   width: 25px;
   border-radius: 50px;
-  background-color: #7874f2;
+  background-color: #ffffff;
   transition: all 0.5s ease;
-}
-
-.burger:hover > .slice {
-  background-color: #9996f0;
 }
 
 /* SIGN IN */
@@ -95,7 +91,7 @@ section #sign-in-form form {
   display: flex;
   flex-direction: column;
   padding: 1.5rem 2.5rem;
-  border-radius: 30px;
+  border-radius: 20px;
   box-shadow: -3px 8px 20px -2px #0000aa14;
   background-color: #dfe2fe54;
 }
@@ -260,9 +256,11 @@ footer i {
     display: none;
   }
   .header .logo img{
+    width: 160px;
     margin-left: 0rem;
   }
   .header .nav {
+    display: none;
     margin: 0;
     position: absolute;
     top: 80px;
@@ -286,6 +284,7 @@ footer i {
     width: 90%;
     height: auto;
     padding: 0.5rem 1.5rem;
+    border-radius: 15px;
   }
   section #sign-in-form form h3{
     font-size: 22px !important;
