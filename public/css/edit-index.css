@@ -151,7 +151,7 @@ body {
   -webkit-align-self: center;
   z-index: 1;
   width: 75%;
-  height: auto;
+  min-height: 110vh;
   margin: 0 0 3rem 0;
 }
 .form h2 {
@@ -268,11 +268,9 @@ body {
   .footer #footer-text {
     font-size: 10px;
   }
-  .content {
-    overflow: scroll;
-  }
   .form {
     width: 85%;
+    min-height: 150vh;
   }
   .form h2 {
     font-size: 26px !important;
