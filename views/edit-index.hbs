@@ -70,6 +70,8 @@
     <main class="content">
       <div class="form">
         <h2>Edit Account</h2>
+
+        {{!-- EMAIL --}}
         <label for="update-email">Update email</label>
         <form action="/db/update-email" method="post" class="update">
           <input type="email" name="update-email" maxlength="100" placeholder="Enter your new email" required />
@@ -86,6 +88,7 @@
           }
         </script>
 
+        {{!-- USERNAME --}}
         <label for="update-username">Update username</label>
         <form action="/db/update-username" method="post" class="update">
           <input type="text" name="update-username" maxlength="25" placeholder="Enter your new username" required />
@@ -102,6 +105,7 @@
           }
         </script>
 
+        {{!-- PASSWORD --}}
         <label for="new-password">Update password</label>
         <form action="/db/update-password" method="post" class="update">
           <input type="password" name="password" maxlength="25" placeholder="Enter your current password" required />
@@ -118,7 +122,6 @@
             window.alert(updatePasswordMessage);
           }
         </script>
-
       </div>
     </main>
   </div>
