@@ -168,10 +168,7 @@ body {
 .form label {
   font-size: 18px;
   font-weight: bold;
-  padding: 4rem 0 1rem 0;
-}
-.form .label-1 {
-  padding: 2.5rem 0 1rem 0;
+  padding: 1rem 0 1rem 0;
 }
 .form input,
 .form button {
@@ -183,7 +180,9 @@ body {
   outline: none;
   border-radius: 7px;
 }
-
+.form .button-container{
+  margin: 0 0 3rem 0;
+}
 .form .submit,
 .form .submit-password {
   display: inline-block;
@@ -285,16 +284,15 @@ body {
   }
   .form label {
     font-size: 16px;
-    padding: 1.5rem 0 1rem 0;
-  }
-  .form .label-1 {
-    padding: 1rem 0 1rem 0;
   }
   .form .submit,
   .form .submit-password {
     font-size: 14px;
     width: 100px;
     padding: 0.6rem;
+  }
+  .form .button-container{
+    margin: 0 0 1rem 0;
   }
   .form .update {
     flex-direction: column;

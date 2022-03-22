@@ -62,7 +62,8 @@
         <p id="footer-text">
           &copy; 2021, All Rights Reserved <br />
           Developed by
-          <a href="https://www.linkedin.com/in/osama-hajj-ali/" target="_blank" style="text-decoration: none;color:#7874f2">Osama Hajj Ali</a>
+          <a href="https://www.linkedin.com/in/osama-hajj-ali/" target="_blank"
+            style="text-decoration: none;color:#7874f2">Osama Hajj Ali</a>
         </p>
       </footer>
     </nav>
@@ -76,7 +77,9 @@
         <form action="/db/update-email" method="post" class="update">
           <input type="email" name="update-email" maxlength="100" placeholder="Enter your new email" required />
           <input type="password" name="password" maxlength="25" placeholder="Enter your password" required />
-          <button class="submit" type="submit" name="submit-username">Update</button>
+          <div class="button-container">
+            <button class="submit" type="submit" name="submit-username">Update</button>
+          </div>
         </form>
         <p id="update-email-message" style="display:none">{{#if updateEmailMessage}}
           {{updateEmailMessage}}
@@ -93,7 +96,9 @@
         <form action="/db/update-username" method="post" class="update">
           <input type="text" name="update-username" maxlength="25" placeholder="Enter your new username" required />
           <input type="password" name="password" maxlength="25" placeholder="Enter your password" required />
-          <button class="submit" type="submit" name="submit-username">Update</button>
+          <div class="button-container">
+            <button class="submit" type="submit" name="submit-username">Update</button>
+          </div>
         </form>
         <p id="update-username-message" style="display:none">{{#if updateUsernameMessage}}
           {{updateUsernameMessage}}
@@ -111,7 +116,9 @@
           <input type="password" name="password" maxlength="25" placeholder="Enter your current password" required />
           <input type="password" name="new-password" maxlength="25" placeholder="Enter your new password" required />
           <input type="password" name="confirm-password" maxlength="25" placeholder="Confirm new password" required />
-          <button class="submit submit-password" type="submit" name="submit-password">Update</button>
+          <div class="button-container">
+            <button class="submit submit-password" type="submit" name="submit-password">Update</button>
+          </div>
         </form>
         <p id="update-password-message" style="display:none">{{#if updatePasswordMessage}}
           {{updatePasswordMessage}}
