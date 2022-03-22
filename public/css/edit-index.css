@@ -152,7 +152,7 @@ body {
   z-index: 1;
   width: 75%;
   height: auto;
-  max-height: 90vh;
+  margin: 0 0 3rem 0;
 }
 .form h2 {
   z-index: 1;
@@ -168,9 +168,11 @@ body {
 .form label {
   font-size: 18px;
   font-weight: bold;
-  margin: 1rem 0;
+  padding: 4rem 0 1rem 0;
 }
-
+.form .label-1 {
+  padding: 2.5rem 0 1rem 0;
+}
 .form input,
 .form button {
   margin-bottom: 1rem;
@@ -197,10 +199,6 @@ body {
   margin: 0;
   letter-spacing: 1px;
   transition: all 0.4s ease;
-  margin-bottom: 3.5rem;
-}
-.form .submit-password {
-  margin-bottom: 5rem;
 }
 
 .form .submit:hover,
@@ -287,16 +285,16 @@ body {
   }
   .form label {
     font-size: 16px;
+    padding: 1.5rem 0 1rem 0;
+  }
+  .form .label-1 {
+    padding: 1rem 0 1rem 0;
   }
   .form .submit,
   .form .submit-password {
     font-size: 14px;
     width: 100px;
     padding: 0.6rem;
-    margin-bottom: 1rem;
-  }
-  .form .submit-password {
-    margin-bottom: 3.5rem;
   }
   .form .update {
     flex-direction: column;
