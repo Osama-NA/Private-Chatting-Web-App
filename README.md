@@ -1,4 +1,4 @@
-# Seguro  
+# Seguro  | Chatting Web Application
 
 ### Seguro is a web application which provides secure chatting between users, simply by creating a chatting room with one click, then sending a friend the generated url to start a chat with them.
 
