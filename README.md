@@ -1,8 +1,8 @@
 # Seguro  | Chatting Web Application
 
-### Seguro is a web application which provides secure chatting between users, simply by creating a chatting room with one click, then sending a friend the generated url to start a chat with them.
+### Seguro, a web app that provides secure chatting, by allowing users to create a private chatting room with a single click, and then sending a friend the generated link to start a chat with them without requiring user registration.
 
-### Seguro does not collect user data or save users chat logs. Chat logs can be saved by signed in users while they are in a chat room, the saved chat logs are encrypted then stored in the database. 
+### Seguro does not collect user data or save users chat logs. Chat logs can be saved only by signed-in users while they are in a chat room. Saved chat logs are encrypted before storing them in the database. 
 
 ## Technologies Used
 
